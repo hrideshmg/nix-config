@@ -14,6 +14,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  swapDevices = [{
+    device = "/swapfile";
+    size = 2 * 1024; # 16GB
+  }];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -40,6 +45,14 @@
     LC_PAPER = "en_IN";
     LC_TELEPHONE = "en_IN";
     LC_TIME = "en_IN";
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.hridesh = {
+    isNormalUser = true;
+    description = "hridesh";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
   };
 
   # Configure keymap in X11
@@ -75,37 +88,19 @@
 	  };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.hridesh = {
-    isNormalUser = true;
-    description = "hridesh";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
 
-  # List packages installed in system profile. To search, run:
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
+  	lsof
 	neovim
 	wget
-	git
-	firefox
 	unzip
-	obsidian
-	mpv
-	wayvnc
-	foot
-	stremio-linux-shell
 	btop
-	stow
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
