@@ -12,13 +12,17 @@
 		obsidian
 		mpv
 		nix-index
+		wl-clipboard
 	];
 
 	programs.foot = {
 		enable = true;
 		settings = {
 			main = {
-				font = "monospace:size=12";
+				font = "Iosevka NFM:size=14";
+			};
+			colors = {
+				background = "2B2E37";
 			};
 		};
 	};
