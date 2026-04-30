@@ -1,0 +1,1 @@
+-- vim.keymap.set({ 'n', 'v' }, '<leader>co', ':FlutterOutlineToggle', { desc = 'Toggles Flutter [O]utline <CR>' })

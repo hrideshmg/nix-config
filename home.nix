@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+	imports = [
+		nvim-config.homeModules.default   # import the HM module from the nvim flake
+	];
+
 	home.username = "hridesh";
 	home.homeDirectory = "/home/hridesh";
 
@@ -15,6 +19,8 @@
 		wl-clipboard
 		opencode
 	];
+
+	nvim.enable = true;
 
 	programs.foot = {
 		enable = true;
