@@ -5,19 +5,21 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 2 * 1024; # 16GB
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 2 * 1024; # 2GB
+    }
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -51,8 +53,11 @@
   users.users.hridesh = {
     isNormalUser = true;
     description = "hridesh";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Configure keymap in X11
@@ -62,30 +67,32 @@
   };
 
   services.syncthing = {
-	enable = true;
-	openDefaultPorts = true;
-	user = "hridesh";
-	dataDir = "/home/hridesh";
-	configDir = "/home/hridesh/.config/syncthing";
-	settings = {
-	    devices = {
-	      "Nothing 3A" = { id = "FI75FLT-7QXDIOE-SXNJFUR-4NL5DKY-WV4FKIJ-TZVUNHW-WJ3A262-6QY5FQX"; };
-	    };
-	    folders = {
-	      "obsidian" = {
-		path = "/home/hridesh/documents/obsidian-vault";
-		devices = [ "Nothing 3A" ];
-	      };
-	      "keepass_sync" = {
-		path = "/home/hridesh/documents/keepass_sync";
-		devices = [ "Nothing 3A" ];
-	      };
-	      "college" = {
-		path = "/home/hridesh/college";
-		devices = [ "Nothing 3A" ];
-	      };
-	    };
-	  };
+    enable = true;
+    openDefaultPorts = true;
+    user = "hridesh";
+    dataDir = "/home/hridesh";
+    configDir = "/home/hridesh/.config/syncthing";
+    settings = {
+      devices = {
+        "Nothing 3A" = {
+          id = "FI75FLT-7QXDIOE-SXNJFUR-4NL5DKY-WV4FKIJ-TZVUNHW-WJ3A262-6QY5FQX";
+        };
+      };
+      folders = {
+        "obsidian" = {
+          path = "/home/hridesh/documents/obsidian-vault";
+          devices = [ "Nothing 3A" ];
+        };
+        "keepass_sync" = {
+          path = "/home/hridesh/documents/keepass_sync";
+          devices = [ "Nothing 3A" ];
+        };
+        "college" = {
+          path = "/home/hridesh/college";
+          devices = [ "Nothing 3A" ];
+        };
+      };
+    };
   };
 
   # Allow unfree packages
@@ -94,19 +101,23 @@
   programs.hyprland.enable = true;
 
   # $ nix search wget
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
-  	lsof
-	neovim
-	wget
-	unzip
-	btop
+    lsof
+    neovim
+    wget
+    unzip
+    btop
+    python3
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   fonts.packages = with pkgs; [
-	nerd-fonts.iosevka
+    nerd-fonts.iosevka
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
