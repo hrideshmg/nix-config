@@ -21,12 +21,12 @@
       luaPath = ./.;
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
 
-       extra_pkg_config = {
-      # allowUnfree = true;
+      extra_pkg_config = {
+        # allowUnfree = true;
       };
 
       dependencyOverlays = [
-      	(utils.standardPluginOverlay inputs)
+        (utils.standardPluginOverlay inputs)
       ];
 
       categoryDefinitions =
@@ -51,6 +51,7 @@
               docker-language-server
               docker-compose-language-service
               clang-tools
+              ripgrep
               gopls
               nixd
               nixfmt
@@ -121,7 +122,7 @@
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [ ];
           };
-      };
+        };
 
       packageDefinitions = {
         nvim =
