@@ -13,6 +13,7 @@
 		mpv
 		nix-index
 		wl-clipboard
+		opencode
 	];
 
 	programs.foot = {
@@ -23,6 +24,7 @@
 			};
 			colors = {
 				background = "2B2E37";
+				cursor = "2B2E37 FFFFFF";
 			};
 		};
 	};
