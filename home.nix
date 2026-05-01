@@ -48,7 +48,6 @@
 
     shellAbbrs = {
       vim = "nvim";
-      cat = "bat -p";
       cdr = "cd (git rev-parse --show-toplevel)";
 
       dev = "tmux new-session -s dev nvim";
