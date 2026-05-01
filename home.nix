@@ -24,6 +24,8 @@
     wl-clipboard
     opencode
     python3
+    rofimoji
+    networkmanager_dmenu
   ];
 
   nvim.enable = true;
@@ -39,6 +41,14 @@
         cursor = "2B2E37 FFFFFF";
       };
     };
+  };
+
+  programs.rofi = {
+    enable = true;
+    theme = "Arc-Dark";
+    plugins = with pkgs; [
+      rofi-calc
+    ];
   };
 
   programs.tmux = {
