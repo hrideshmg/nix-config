@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
   };
 
   outputs =
