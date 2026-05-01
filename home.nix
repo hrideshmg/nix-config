@@ -26,7 +26,16 @@
     python3
     rofimoji
     networkmanager_dmenu
+    nemo-with-extensions
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Arc-Dark";
+      package = pkgs.arc-theme;
+    };
+  };
 
   nvim.enable = true;
 
