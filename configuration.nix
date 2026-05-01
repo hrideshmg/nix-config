@@ -49,6 +49,8 @@
     LC_TIME = "en_IN";
   };
 
+  users.defaultUserShell = pkgs.fish;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hridesh = {
     isNormalUser = true;
@@ -99,6 +101,7 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
+  programs.fish.enable = true;
 
   # $ nix search wget
   nix.settings.experimental-features = [
