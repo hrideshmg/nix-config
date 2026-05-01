@@ -839,6 +839,12 @@
         "SUPER, Up, exec, brightnessctl s +3% -n 1 -d 'intel_backlight'"
       ];
 
+      bindm = [
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
+      ];
+
       # --- Autostart ---
       "exec-once" = [
         "hyprpaper"
