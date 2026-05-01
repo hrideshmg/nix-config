@@ -17,7 +17,6 @@
     neofetch
     firefox
     tmux
-    stremio-linux-shell
     obsidian
     mpv
     nix-index
@@ -37,6 +36,21 @@
     discord
     font-awesome
     inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh1
+    (pkgs.symlinkJoin {
+      name = "stremio";
+      paths = [ pkgs.stremio-linux-shell ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/stremio \
+          --set LIBGL_ALWAYS_SOFTWARE 1 \
+          --set GALLIUM_DRIVER llvmpipe \
+          --add-flags "--disable-gpu" \
+          --add-flags "--disable-gpu-compositing" \
+          --add-flags "--disable-software-rasterizer"
+      '';
+    })
   ];
 
   gtk = {
@@ -700,15 +714,17 @@
         "float, workspace:name:special"
 
         # Opacity rules (Active, Inactive, Fullscreen)
+        "opacity 1.0 override 1.0 override, class:^(discord)$"
         "opacity 1.0 override 1.0 override, class:^(firefox)$"
         "opacity 1.0 override 1.0 override, class:^(Google-chrome)$"
-        "opacity 1.0 override 1.0 override, class:^(obsidian)$"
+        "opacity 1.0 override 1.0 override, class:^(electron)$"
         "opacity 1.0 override 1.0 override, class:^(org.pwmt.zathura)$"
+        "opacity 1.0 override 1.0 override, title:^(Stremio)$"
 
         # Floating rules
         "float, class:^(firefox)$, title:^(Library)$"
         "float, title:^(Choose Files)$"
-        "float, title:^(floating_foot)$"
+        "float, size 40% 40%, title:^(floating_foot)$"
         "float, title:^(Save As)$"
         "float, title:^(Open)$"
         "float, title:^(blueman)$"
@@ -720,14 +736,14 @@
       # --- Keybinds ---
       bind = [
         # Launch Apps
-        "SUPER, Z, exec, spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "SUPER, Z, exec, spotify --disable-gpu"
         "SUPER, B, exec, firefox"
-        "SUPER, N, exec, obsidian"
+        "SUPER, N, exec, obsidian --disable-gpu"
         "SUPER, C, exec, google-chrome-stable"
 
         "SUPER, I, exec, networkmanager_dmenu"
         "SUPER, W, exec, rofi -show window"
-        "SUPER, R, exec, rofi -show run"
+        "SUPER, R, exec, rofi -show drun"
         "SUPER, E, exec, rofi -show calc -modi calc -no-show-match -no-sort"
         "SUPER, period, exec, rofimoji --skin-tone neutral"
 
@@ -827,7 +843,7 @@
       "exec-once" = [
         "hyprpaper"
         "wlsunset -l 9.9 -L 76.2 -t 4600"
-        "discord --start-minimized --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "discord --start-minimized --disable-gpu"
         "waybar"
       ];
     };
