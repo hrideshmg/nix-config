@@ -30,7 +30,8 @@
     nemo-with-extensions
     vivid
     docker
-    # spotify
+    keepassxc
+    spotify
     playerctl
     wlsunset
     discord
