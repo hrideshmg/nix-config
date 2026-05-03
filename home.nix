@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  secrets,
   ...
 }:
 
@@ -37,6 +38,8 @@
     discord
     font-awesome
     inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    git-crypt
 
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh1
     (pkgs.symlinkJoin {
@@ -254,7 +257,6 @@
       user = {
         email = "hridesh699@gmail.com";
         name = "Hridesh MG";
-        signingkey = "85C0EF6C72674D7B";
       };
       signing.signByDefault = false;
       alias = {
@@ -288,8 +290,16 @@
   services.wayvnc = {
     enable = true;
     autoStart = true;
-    settings.address = "0.0.0.0";
-    settings.port = 5900;
+    settings = {
+      address = "0.0.0.0";
+      port = 5900;
+      enable_auth = true;
+      use_relative_paths = true;
+      username = "hridesh";
+      password = secrets.wayvnc.password;
+      private_key_file = "${./secrets/wayvnc/tls_key.pem}";
+      certificate_file = "${./secrets/wayvnc/tls_cert.pem}";
+    };
   };
 
   services.hyprpaper = {

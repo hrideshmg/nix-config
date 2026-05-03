@@ -24,6 +24,9 @@
       nvim-pkg,
       ...
     }@inputs:
+    let
+      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+    in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         modules = [
@@ -33,7 +36,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              inherit secrets;
+            };
             home-manager.users.hridesh = import ./home.nix;
           }
         ];
