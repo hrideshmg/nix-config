@@ -669,8 +669,6 @@
 
       decoration = {
         rounding = 5;
-        active_opacity = 0.85;
-        inactive_opacity = 0.8;
         blur = {
           size = 7;
           passes = 2;
@@ -725,12 +723,8 @@
         "float, workspace:name:special"
 
         # Opacity rules (Active, Inactive, Fullscreen)
-        "opacity 1.0 override 1.0 override, class:^(discord)$"
-        "opacity 1.0 override 1.0 override, class:^(firefox)$"
-        "opacity 1.0 override 1.0 override, class:^(Google-chrome)$"
-        "opacity 1.0 override 1.0 override, class:^(electron)$"
-        "opacity 1.0 override 1.0 override, class:^(org.pwmt.zathura)$"
-        "opacity 1.0 override 1.0 override, title:^(Stremio)$"
+        "opacity 0.85 override 0.8 override, class:^(foot)$"
+        "opacity 1.0 override 1.0 override, title:^tmux.*"
 
         # Floating rules
         "float, class:^(firefox)$, title:^(Library)$"
