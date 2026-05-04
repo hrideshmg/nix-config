@@ -314,7 +314,7 @@
       ];
 
       wallpaper = [
-        "HDMI-A-1,${./wallpapers/unit01.png}"
+        "Virtual-1,${./wallpapers/unit01.png}"
       ];
     };
   };
@@ -628,6 +628,9 @@
         "HYPRCURSOR_SIZE,32"
       ];
 
+      monitor = [
+        "Virtual-1, 1920x1080, auto, 1"
+      ];
       # monitor = [
       #   "eDP-1,2560x1440@165,1920x0,1.25"
       #   "DP-1,1920x1080@60,0x0,1"
