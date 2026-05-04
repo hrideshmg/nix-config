@@ -294,11 +294,11 @@
       address = "0.0.0.0";
       port = 5900;
       enable_auth = true;
+      relax_encryption = true;
       use_relative_paths = true;
       username = "hridesh";
       password = secrets.wayvnc.password;
-      private_key_file = "${./secrets/wayvnc/tls_key.pem}";
-      certificate_file = "${./secrets/wayvnc/tls_cert.pem}";
+      rsa_private_key_file = "${./secrets/wayvnc/rsa_key.pem}";
     };
   };
 
