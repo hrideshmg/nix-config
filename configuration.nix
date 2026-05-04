@@ -21,15 +21,25 @@
     }
   ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    defaultGateway = "192.168.1.1";
+    useDHCP = false;
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    interfaces.ens18.ipv4.addresses = [
+      {
+        address = "192.168.1.65";
+        prefixLength = 24;
+      }
+    ];
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # enable networking
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
