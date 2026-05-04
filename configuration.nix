@@ -68,6 +68,18 @@
     variant = "";
   };
 
+  systemd.services.websockify = {
+    enable = true;
+    description = "websockify (no TLS)";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.python313Packages.websockify}/bin/websockify --cert=${./secrets/hrideshmg.com/cert.pem} --key=${./secrets/hrideshmg.com/key.pem} --web=${pkgs.novnc}/share/webapps/novnc 0.0.0.0:8443 127.0.0.1:5900";
+      Restart = "on-failure";
+    };
+  };
+
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
@@ -137,7 +149,10 @@
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5900 ];
+  networking.firewall.allowedTCPPorts = [
+    8443
+    5900
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
