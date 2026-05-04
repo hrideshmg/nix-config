@@ -113,6 +113,20 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "Hyprland";
+        user = "hridesh";
+      };
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
   programs.fish.enable = true;
 
   # $ nix search wget
