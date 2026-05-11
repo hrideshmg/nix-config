@@ -28,21 +28,27 @@
       secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./configuration.nix
+      nixosConfigurations.workstation =
+        let
+          username = "operator";
+        in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit username; };
+          modules = [
+            ./hosts/workstation
+            ./users/${username}/nixos.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              inherit secrets;
-            };
-            home-manager.users.hridesh = import ./home.nix;
-          }
-        ];
-      };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit secrets;
+              };
+              home-manager.users.${username} = import ./home.nix;
+            }
+          ];
+        };
     };
 }

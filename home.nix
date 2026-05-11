@@ -11,8 +11,8 @@
     inputs.nvim-pkg.homeModules.default # import the HM module from the nvim flake
   ];
 
-  home.username = "hridesh";
-  home.homeDirectory = "/home/hridesh";
+  home.username = "operator";
+  home.homeDirectory = "/home/operator";
 
   home.packages = with pkgs; [
     neofetch
@@ -296,7 +296,7 @@
       enable_auth = true;
       relax_encryption = true;
       use_relative_paths = true;
-      username = "hridesh";
+      username = "operator";
       password = secrets.wayvnc.password;
       rsa_private_key_file = "${./secrets/wayvnc/rsa_key.pem}";
     };
@@ -755,7 +755,7 @@
         "SUPER, E, exec, rofi -show calc -modi calc -no-show-match -no-sort"
         "SUPER, period, exec, rofimoji --skin-tone neutral"
 
-        "SUPER, Return, exec, foot"
+        "alt, Return, exec, foot"
         "SUPER SHIFT, Return, exec, foot --title floating_foot"
 
         # Screenshots
@@ -776,7 +776,7 @@
         ", XF86AudioNext, exec, playerctl next"
 
         # Window Management
-        "SUPER, Q, killactive,"
+        "alt, Q, killactive,"
         "SUPER SHIFT, Q, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit "
         "SUPER, SPACE, togglefloating,"
         "SUPER, S, togglesplit,"
@@ -790,10 +790,10 @@
         "SUPER, c, exec, hyprctl dispatch centerwindow"
 
         # Move focus (Vim keys)
-        "SUPER, H, movefocus, l"
-        "SUPER, L, movefocus, r"
-        "SUPER, K, movefocus, u"
-        "SUPER, J, movefocus, d"
+        "alt, H, movefocus, l"
+        "alt, L, movefocus, r"
+        "alt, K, movefocus, u"
+        "alt, J, movefocus, d"
 
         # Move Windows
         "SUPER SHIFT, H, movewindow, l"
@@ -814,9 +814,9 @@
         "SUPER SHIFT CTRL, J, resizeactive, 0 20%"
 
         # Workspaces (Switching)
-        "SUPER, 1, workspace, 1"
-        "SUPER, 2, workspace, 2"
-        "SUPER, 3, workspace, 3"
+        "alt, 1, workspace, 1"
+        "alt, 2, workspace, 2"
+        "alt, 3, workspace, 3"
         "SUPER, 4, workspace, 4"
         "SUPER, 5, workspace, 5"
         "SUPER, 6, workspace, 6"
@@ -826,9 +826,9 @@
         "SUPER, 0, workspace, 10"
 
         # Move to Workspace
-        "SUPER SHIFT, 1, movetoworkspace, 1"
-        "SUPER SHIFT, 2, movetoworkspace, 2"
-        "SUPER SHIFT, 3, movetoworkspace, 3"
+        "alt SHIFT, 1, movetoworkspace, 1"
+        "alt SHIFT, 2, movetoworkspace, 2"
+        "alt SHIFT, 3, movetoworkspace, 3"
         "SUPER SHIFT, 4, movetoworkspace, 4"
         "SUPER SHIFT, 5, movetoworkspace, 5"
         "SUPER SHIFT, 6, movetoworkspace, 6"
