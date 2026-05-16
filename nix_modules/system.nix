@@ -55,6 +55,7 @@
     wget
     unzip
     btop
+    tmux
   ];
 
   fonts.packages = with pkgs; [

@@ -45,9 +45,15 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit secrets;
+                inherit username;
               };
-              home-manager.users.${username} = import ./home.nix;
-            }
+              home-manager.users.${username} = {
+				imports = [
+					./home.nix
+					./users/${username}/home.nix
+				];
+            };
+		}
           ];
         };
     };

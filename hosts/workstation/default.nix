@@ -7,9 +7,9 @@
 
 {
   imports = [
-    ../../common/system.nix
-    ../../common/hyprland.nix
-    ../../common/syncthing.nix
+    ../../nix_modules/system.nix
+    ../../nix_modules/hyprland.nix
+    ../../nix_modules/syncthing.nix
 
     ./hardware-configuration.nix
   ];
@@ -36,6 +36,8 @@
         prefixLength = 24;
       }
     ];
+
+    networkmanager.enable = true;
   };
 
   networking.firewall.allowedTCPPorts = [
