@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   username,
   ...
 }:
@@ -23,21 +21,21 @@
       };
       folders = {
         "obsidian" = {
-          path = "/home/operator/documents/obsidian-vault";
+          path = "/home/${username}/documents/obsidian-vault";
           devices = [
             "Nothing 3A"
             "Windows PC"
           ];
         };
         "keepass_sync" = {
-          path = "/home/operator/documents/keepass_sync";
+          path = "/home/${username}/documents/keepass_sync";
           devices = [
             "Nothing 3A"
             "Windows PC"
           ];
         };
         "college" = {
-          path = "/home/operator/college";
+          path = "/home/${username}/college";
           devices = [
             "Nothing 3A"
             "Windows PC"

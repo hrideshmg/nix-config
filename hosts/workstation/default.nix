@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  username,
   ...
 }:
 
@@ -10,6 +7,7 @@
     ../../nix_modules/system.nix
     ../../nix_modules/hyprland.nix
     ../../nix_modules/syncthing.nix
+    ../../nix_modules/vnc-web.nix
 
     ./hardware-configuration.nix
   ];
@@ -41,21 +39,11 @@
   };
 
   networking.firewall.allowedTCPPorts = [
+    # websockify/noVNC
     8443
+    # wayVNC
     5900
   ];
-
-  systemd.services.websockify = {
-    enable = true;
-    description = "websockify (no TLS)";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.python313Packages.websockify}/bin/websockify --cert=${../../secrets/hrideshmg.com/cert.pem} --key=${../../secrets/hrideshmg.com/key.pem} --web=${pkgs.novnc}/share/webapps/novnc 0.0.0.0:8443 127.0.0.1:5900";
-      Restart = "on-failure";
-    };
-  };
 
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
