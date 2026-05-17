@@ -5,6 +5,7 @@
     ./common.nix
     ./git.nix
     ./media.nix
+    ./browsers.nix
   ];
 
   home.username = username;

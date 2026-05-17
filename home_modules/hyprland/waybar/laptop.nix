@@ -1,5 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    wlsunset
+  ];
+
   imports = [
     ./default.nix
   ];

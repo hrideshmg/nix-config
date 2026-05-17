@@ -7,41 +7,6 @@
 }:
 
 {
-  home.packages = with pkgs; [
-    firefox
-    obsidian
-    wl-clipboard
-    opencode
-    rofimoji
-    networkmanager_dmenu
-    grimblast
-    nemo-with-extensions
-    docker
-    keepassxc
-    spotify
-    wlsunset
-    discord
-    font-awesome
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-  ];
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
-    };
-  };
-
-  programs.rofi = {
-    enable = true;
-    theme = "Arc-Dark";
-    plugins = with pkgs; [
-      rofi-calc
-    ];
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;

@@ -5,9 +5,20 @@
   ];
 
   home.packages = with pkgs; [
+    # nix
     git-crypt
     nix-index
+
+    # development
+    docker
     python3
+
+    # productivity
+    keepassxc
+    obsidian
+
+    # file manager
+    nemo-with-extensions
   ];
 
   # Primary editor

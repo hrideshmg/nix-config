@@ -53,6 +53,7 @@
     lsof
     vim
     wget
+    zip
     unzip
     btop
     tmux
