@@ -8,9 +8,7 @@
 
 {
   home.packages = with pkgs; [
-    neofetch
     firefox
-    tmux
     obsidian
     wl-clipboard
     opencode
@@ -18,7 +16,6 @@
     networkmanager_dmenu
     grimblast
     nemo-with-extensions
-    vivid
     docker
     keepassxc
     spotify
@@ -27,20 +24,6 @@
     font-awesome
     inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
 
-    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh1
-    (pkgs.symlinkJoin {
-      name = "stremio";
-      paths = [ pkgs.stremio-linux-shell ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/stremio \
-          --set LIBGL_ALWAYS_SOFTWARE 1 \
-          --set GALLIUM_DRIVER llvmpipe \
-          --add-flags "--disable-gpu" \
-          --add-flags "--disable-gpu-compositing" \
-          --add-flags "--disable-software-rasterizer"
-      '';
-    })
   ];
 
   gtk = {
@@ -48,19 +31,6 @@
     theme = {
       name = "Arc-Dark";
       package = pkgs.arc-theme;
-    };
-  };
-
-  programs.foot = {
-    enable = true;
-    settings = {
-      main = {
-        font = "Iosevka NFM:size=14";
-      };
-      colors = {
-        background = "2B2E37";
-        cursor = "2B2E37 FFFFFF";
-      };
     };
   };
 
