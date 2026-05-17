@@ -57,23 +57,6 @@
     };
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      # Nix will convert these to /nix/store/... paths automatically
-      preload = [
-        "${./wallpapers/anime_night.png}"
-        "${./wallpapers/unit01.png}"
-        "${./wallpapers/rei_field.png}"
-        "${./wallpapers/astro_girl.png}"
-      ];
-
-      wallpaper = [
-        "Virtual-1,${./wallpapers/unit01.png}"
-      ];
-    };
-  };
-
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;

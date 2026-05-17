@@ -4,6 +4,7 @@
   imports = [
     ./common.nix
     ./git.nix
+    ./media.nix
   ];
 
   home.username = username;

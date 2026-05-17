@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     git-crypt
     nix-index
+    python3
   ];
 
   # Primary editor

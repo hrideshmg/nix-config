@@ -26,6 +26,7 @@
     }@inputs:
     let
       secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
+      hostArgs.workstation.monitors = import ./hosts/workstation/monitors.nix;
     in
     {
       nixosConfigurations.workstation =
@@ -46,14 +47,15 @@
                 inherit inputs;
                 inherit secrets;
                 inherit username;
-              };
+              }
+              // hostArgs.workstation; # merge this attr set into the above
               home-manager.users.${username} = {
-				imports = [
-					./home.nix
-					./users/${username}/home.nix
-				];
-            };
-		}
+                imports = [
+                  ./home.nix
+                  ./users/${username}/home.nix
+                ];
+              };
+            }
           ];
         };
     };
