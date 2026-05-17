@@ -4,8 +4,9 @@
     ../../home_modules/base
     ../../home_modules/shell
     ../../home_modules/hyprland
-    ../../home_modules/hyprland/waybar
   ];
+
+  hyprland.mainMod = "ALT";
 
   services.wayvnc = {
     enable = true;
@@ -22,4 +23,5 @@
     };
   };
 
+  wayland.windowManager.hyprland.settings.cursor.no_hardware_cursors = true;
 }

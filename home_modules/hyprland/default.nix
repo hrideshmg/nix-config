@@ -1,32 +1,52 @@
-{ inputs, pkgs, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
-    ./hyprpaper.nix
+    ./services/hyprpaper.nix
+    ./waybar
+    ./config
   ];
 
-  home.packages = with pkgs; [
-    grimblast
-    wl-clipboard
-
-    rofimoji
-    networkmanager_dmenu
-
-    inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
-    };
+  # this creates a custom nixos option available at config.hyprland.mainMod
+  options.hyprland.mainMod = lib.mkOption {
+    type = lib.types.str;
+    default = "SUPER";
+    description = "The main modifier key used for hyprland keybindings";
   };
 
-  programs.rofi = {
-    enable = true;
-    theme = "Arc-Dark";
-    plugins = with pkgs; [
-      rofi-calc
+  config = {
+    home.packages = with pkgs; [
+      # Utils
+      grimblast
+      wl-clipboard
+
+      # rofi plugins
+      rofimoji
+      networkmanager_dmenu
+
+      # cursor theme
+      inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Arc-Dark";
+        package = pkgs.arc-theme;
+      };
+    };
+
+    programs.rofi = {
+      enable = true;
+      theme = "Arc-Dark";
+      plugins = with pkgs; [
+        # Add a calculator to rofi
+        rofi-calc
+      ];
+    };
   };
 }

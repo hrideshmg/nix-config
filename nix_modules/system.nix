@@ -38,7 +38,7 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [ ];
+    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -58,6 +58,8 @@
     btop
     tmux
   ];
+
+  programs.fish.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka

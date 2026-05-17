@@ -37,7 +37,6 @@
           specialArgs = { inherit username; };
           modules = [
             ./hosts/workstation
-            ./users/${username}/nixos.nix
 
             home-manager.nixosModules.home-manager
             {
@@ -49,12 +48,7 @@
                 inherit username;
               }
               // hostArgs.workstation; # merge this attr set into the above
-              home-manager.users.${username} = {
-                imports = [
-                  ./home.nix
-                  ./users/${username}/home.nix
-                ];
-              };
+              home-manager.users.${username} = import ./users/${username}/home.nix;
             }
           ];
         };
