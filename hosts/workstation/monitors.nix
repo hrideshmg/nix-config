@@ -4,5 +4,6 @@
     resolution = "1920x1080";
     refresh = "60";
     wallpaper = "${../../wallpapers/unit01.png}";
+    scaling = "1";
   }
 ]

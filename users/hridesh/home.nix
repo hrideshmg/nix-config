@@ -2,6 +2,8 @@
 {
   imports = [
     ../../home_modules/base
+    ../../home_modules/base/media.nix
+
     ../../home_modules/shell
     ../../home_modules/hyprland
 
@@ -10,6 +12,8 @@
 
     ../../home_modules/hyprland/services/swaylock.nix
   ];
+
+  hyprland.mainMod = "ALT";
 
   home.packages = with pkgs; [
     spotify

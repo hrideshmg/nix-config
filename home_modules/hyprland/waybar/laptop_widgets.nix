@@ -1,18 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     wlsunset
   ];
 
-  programs.waybar.settings = {
-  mainbar = {
+  programs.waybar.settings.mainBar = {
     modules-left = [
       #"custom/power_profile"
     ];
 
-    modules-right = [
+    modules-right = lib.mkForce [
+      "tray"
       "backlight"
+      "pulseaudio"
+      "network"
       "battery"
+      "clock"
     ];
 
     #"custom/power_profile" = {
@@ -57,7 +60,6 @@
         " "
         " "
       ];
-    };
     };
   };
 }

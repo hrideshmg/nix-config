@@ -8,4 +8,5 @@
     ./hardware-configuration.nix
   ];
   networking.hostName = "zenbook14";
+  networking.networkmanager.enable = true;
 }

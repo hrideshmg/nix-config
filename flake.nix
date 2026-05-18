@@ -72,7 +72,7 @@
                 inherit secrets;
                 inherit username;
               }
-              // hostArgs.workstation; # merge this attr set into the above
+              // hostArgs.zenbook14; # merge this attr set into the above
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
           ];

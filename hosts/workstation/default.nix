@@ -1,4 +1,5 @@
 {
+  username,
   ...
 }:
 
@@ -45,6 +46,12 @@
     5900
   ];
 
+  services.greetd.settings = {
+    initial_session = {
+      command = "Hyprland";
+      user = username;
+    };
+  };
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
 }

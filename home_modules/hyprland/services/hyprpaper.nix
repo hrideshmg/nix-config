@@ -9,6 +9,7 @@
         "${../../../wallpapers/unit01.png}"
         "${../../../wallpapers/rei_field.png}"
         "${../../../wallpapers/astro_girl.png}"
+        "${../../../wallpapers/firewatch_oled.png}"
       ];
 
       wallpaper = map (monitor: "${monitor.name},${monitor.wallpaper}") monitors;

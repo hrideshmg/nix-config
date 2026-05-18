@@ -12,7 +12,7 @@
 
     settings = {
       monitor = builtins.map (
-        monitor: "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, auto, 1"
+        monitor: "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, auto, ${monitor.scaling}"
       ) monitors;
 
       "exec-once" = [
