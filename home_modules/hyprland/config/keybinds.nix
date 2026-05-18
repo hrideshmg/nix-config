@@ -18,7 +18,7 @@ in
       "${mainMod}, E, exec, rofi -show calc -modi calc -no-show-match -no-sort"
       "${mainMod}, period, exec, rofimoji --skin-tone neutral"
 
-      "alt, Return, exec, foot"
+      "${mainMod}, Return, exec, foot"
       "${mainMod} SHIFT, Return, exec, foot --title floating_foot"
 
       # Screenshots
@@ -39,7 +39,7 @@ in
       ", XF86AudioNext, exec, playerctl next"
 
       # Window Management
-      "alt, Q, killactive,"
+      "${mainMod}, Q, killactive,"
       "${mainMod} SHIFT, Q, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit "
       "${mainMod}, SPACE, togglefloating,"
       "${mainMod}, S, togglesplit,"
@@ -53,10 +53,10 @@ in
       "${mainMod}, c, exec, hyprctl dispatch centerwindow"
 
       # Move focus (Vim keys)
-      "alt, H, movefocus, l"
-      "alt, L, movefocus, r"
-      "alt, K, movefocus, u"
-      "alt, J, movefocus, d"
+      "${mainMod}, H, movefocus, l"
+      "${mainMod}, L, movefocus, r"
+      "${mainMod}, K, movefocus, u"
+      "${mainMod}, J, movefocus, d"
 
       # Move Windows
       "${mainMod} SHIFT, H, movewindow, l"
@@ -77,9 +77,9 @@ in
       "${mainMod} SHIFT CTRL, J, resizeactive, 0 20%"
 
       # Workspaces (Switching)
-      "alt, 1, workspace, 1"
-      "alt, 2, workspace, 2"
-      "alt, 3, workspace, 3"
+      "${mainMod}, 1, workspace, 1"
+      "${mainMod}, 2, workspace, 2"
+      "${mainMod}, 3, workspace, 3"
       "${mainMod}, 4, workspace, 4"
       "${mainMod}, 5, workspace, 5"
       "${mainMod}, 6, workspace, 6"
@@ -89,9 +89,9 @@ in
       "${mainMod}, 0, workspace, 10"
 
       # Move to Workspace
-      "alt SHIFT, 1, movetoworkspace, 1"
-      "alt SHIFT, 2, movetoworkspace, 2"
-      "alt SHIFT, 3, movetoworkspace, 3"
+      "${mainMod} SHIFT, 1, movetoworkspace, 1"
+      "${mainMod} SHIFT, 2, movetoworkspace, 2"
+      "${mainMod} SHIFT, 3, movetoworkspace, 3"
       "${mainMod} SHIFT, 4, movetoworkspace, 4"
       "${mainMod} SHIFT, 5, movetoworkspace, 5"
       "${mainMod} SHIFT, 6, movetoworkspace, 6"
