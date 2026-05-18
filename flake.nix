@@ -61,7 +61,7 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit username; };
           modules = [
-            ./hosts/workstation
+            ./hosts/zenbook14
 
             home-manager.nixosModules.home-manager
             {

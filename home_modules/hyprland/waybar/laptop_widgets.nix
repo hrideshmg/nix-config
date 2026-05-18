@@ -5,6 +5,7 @@
   ];
 
   programs.waybar.settings = {
+  mainbar = {
     modules-left = [
       #"custom/power_profile"
     ];
@@ -56,6 +57,7 @@
         " "
         " "
       ];
+    };
     };
   };
 }
