@@ -7,7 +7,6 @@
 {
   imports = [
     ./services/hyprpaper.nix
-    ./waybar
     ./config
   ];
 

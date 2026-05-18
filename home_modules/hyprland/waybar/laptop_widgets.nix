@@ -4,25 +4,14 @@
     wlsunset
   ];
 
-  imports = [
-    ./default.nix
-  ];
-
   programs.waybar.settings = {
     modules-left = [
       #"custom/power_profile"
-      "cpu"
-      "memory"
-      "hyprland/workspaces"
     ];
 
     modules-right = [
-      "tray"
       "backlight"
-      "pulseaudio"
-      "network"
       "battery"
-      "clock"
     ];
 
     #"custom/power_profile" = {
