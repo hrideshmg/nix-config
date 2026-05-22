@@ -11,6 +11,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -48,6 +49,10 @@
     "nix-command"
     "flakes"
   ];
+
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
 
   environment.systemPackages = with pkgs; [
     lsof

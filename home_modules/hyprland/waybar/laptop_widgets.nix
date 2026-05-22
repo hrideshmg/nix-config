@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     wlsunset
+    brightnessctl
   ];
 
   programs.waybar.settings.mainBar = {
@@ -37,8 +38,8 @@
         ""
       ];
       on-click = "pkill -USR1 wlsunset";
-      on-scroll-up = "brightnessctl -d intel_backlight set +2%";
-      on-scroll-down = "brightnessctl --min-value -d intel_backlight set 2%-";
+      on-scroll-up = "brightnessctl set +2%";
+      on-scroll-down = "brightnessctl --min-value=2 set 2%-";
     };
 
     battery = {
