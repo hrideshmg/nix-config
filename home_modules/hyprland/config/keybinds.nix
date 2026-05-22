@@ -28,15 +28,14 @@ in
       # Misc & System
       "${mainMod}, X, exec, swaylock"
 
-      # Brightness (Discrete taps)
-      ", XF86MonBrightnessDown, exec, brightnessctl s 3%- -n 1 -d 'intel_backlight'; brightnessctl s 3%- -n 1 -d 'nvidia_0'"
-      ", XF86MonBrightnessUp, exec, brightnessctl s +3% -n 1 -d 'intel_backlight'; brightnessctl s +3% -n 1 -d 'nvidia_0'"
-
       # Media Keys
       ", XF86AudioPlay, exec, playerctl -p spotify,firefox,%any play-pause"
       ", XF86AudioPause, exec, playerctl -p spotify,firefox,%any play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
       ", XF86AudioNext, exec, playerctl next"
+
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+"
 
       # Window Management
       "${mainMod}, Q, killactive,"
@@ -106,8 +105,8 @@ in
     ];
 
     binde = [
-      "${mainMod}, Down, exec, brightnessctl s 3%- -n 1 -d 'intel_backlight'"
-      "${mainMod}, Up, exec, brightnessctl s +3% -n 1 -d 'intel_backlight'"
+      "${mainMod}, Down, exec, brightnessctl --min-value=2 s 3%- -n 1"
+      "${mainMod}, Up, exec, brightnessctl s +3% -n 1"
     ];
 
     bindm = [
