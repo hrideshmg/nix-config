@@ -15,8 +15,8 @@
         "Nothing 3A" = {
           id = "FI75FLT-7QXDIOE-SXNJFUR-4NL5DKY-WV4FKIJ-TZVUNHW-WJ3A262-6QY5FQX";
         };
-        "Windows PC" = {
-          id = "FSGTJ5K-F5BXUKI-WOCJEE3-UWLNPCR-WB4FRBZ-DZTVWU2-PR6HY2L-Q5PIVA3";
+        "Workstation" = {
+          id = "RMJVGRE-ZDUEYVN-3QTXYJX-SWJ7PPI-3WE47KU-O25HWIH-23F4MWN-UECVNAL";
         };
       };
       folders = {
@@ -24,21 +24,21 @@
           path = "/home/${username}/documents/obsidian-vault";
           devices = [
             "Nothing 3A"
-            "Windows PC"
+            "Workstation"
           ];
         };
         "keepass_sync" = {
           path = "/home/${username}/documents/keepass_sync";
           devices = [
             "Nothing 3A"
-            "Windows PC"
+            "Workstation"
           ];
         };
         "college" = {
           path = "/home/${username}/college";
           devices = [
             "Nothing 3A"
-            "Windows PC"
+            "Workstation"
           ];
         };
       };

@@ -25,11 +25,13 @@
         "HYPRCURSOR_SIZE,32"
       ];
 
+      gesture = "3, horizontal, workspace";
+
       input = {
         numlock_by_default = true;
         touchpad = {
           natural_scroll = true;
-          scroll_factor = 1.5;
+          scroll_factor = 0.9;
         };
         sensitivity = 0.1;
       };
