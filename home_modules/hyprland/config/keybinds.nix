@@ -12,9 +12,9 @@ in
       "${mainMod}, N, exec, obsidian --disable-gpu"
       "${mainMod}, C, exec, google-chrome-stable"
 
-      "${mainMod}, I, exec, networkmanager_dmenu"
-      "${mainMod}, W, exec, rofi -show window"
-      "${mainMod}, R, exec, rofi -show drun"
+      "${mainMod}, I, exec, networkmanager_dmenu -i"
+      "${mainMod}, W, exec, rofi -i -show window"
+      "${mainMod}, R, exec, rofi -i -show drun"
       "${mainMod}, E, exec, rofi -show calc -modi calc -no-show-match -no-sort"
       "${mainMod}, period, exec, rofimoji --skin-tone neutral"
 
@@ -98,10 +98,6 @@ in
       "${mainMod} SHIFT, 8, movetoworkspace, 8"
       "${mainMod} SHIFT, 9, movetoworkspace, 9"
       "${mainMod} SHIFT, 0, movetoworkspace, 10"
-
-      # Mouse Scroll Workspaces
-      "${mainMod}, mouse_down, workspace, e+1"
-      "${mainMod}, mouse_up, workspace, e-1"
     ];
 
     binde = [
