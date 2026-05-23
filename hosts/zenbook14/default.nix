@@ -10,4 +10,5 @@
   ];
   networking.hostName = "zenbook14";
   networking.networkmanager.enable = true;
+  services.tailscale.enable = true;
 }

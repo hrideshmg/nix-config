@@ -36,7 +36,7 @@
 
       device = {
         name = "logitech-g102-prodigy-gaming-mouse";
-        sensitivity = -0.2;
+        sensitivity = -0.4;
       };
 
       # --- Layouts & Misc ---
