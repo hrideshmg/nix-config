@@ -11,6 +11,7 @@
     ../../home_modules/hyprland/waybar/laptop_widgets.nix
 
     ../../home_modules/hyprland/services/swaylock.nix
+    ../../home_modules/hyprland/services/power_monitor.nix
   ];
 
   hyprland.mainMod = "ALT";
