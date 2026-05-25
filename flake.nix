@@ -14,6 +14,7 @@
     };
 
     mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       nixpkgs,
       home-manager,
       nvim-pkg,
+      claude-code,
       ...
     }@inputs:
     let
@@ -52,6 +54,7 @@
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
           ];
+          nixpkgs.overlays = [ claude-code.overlays ];
         };
 
       nixosConfigurations.zenbook14 =

@@ -5,6 +5,7 @@
     ./fish
     ./tmux
     ./foot.nix
+    ./direnv.nix
   ];
 
   home.packages = with pkgs; [

@@ -20,6 +20,8 @@
     spotify
     discord
     stremio-linux-shell
+    claude-code
+    opencode
   ];
 
   wayland.windowManager.hyprland.settings = {
