@@ -88,6 +88,7 @@
           format-bluetooth = "  {volume}%";
           format-bluetooth-muted = "";
           format-muted = "";
+          max-volume = 150;
           format-icons = {
             headphone = "";
             hands-free = "";

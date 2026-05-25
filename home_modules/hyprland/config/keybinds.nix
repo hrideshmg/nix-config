@@ -8,9 +8,8 @@ in
     bind = [
       # Launch Apps
       "${mainMod}, Z, exec, spotify --disable-gpu"
-      "${mainMod}, B, exec, firefox"
+      "${mainMod}, B, exec, chromium"
       "${mainMod}, N, exec, obsidian --disable-gpu"
-      "${mainMod}, C, exec, chromium"
 
       "${mainMod}, I, exec, networkmanager_dmenu -i"
       "${mainMod}, W, exec, rofi -i -show window"

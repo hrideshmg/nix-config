@@ -12,6 +12,8 @@
 
     ../../home_modules/hyprland/services/swaylock.nix
     ../../home_modules/hyprland/services/power_monitor.nix
+
+    ../../home_modules/programs/coding_agents
   ];
 
   hyprland.mainMod = "ALT";
@@ -20,8 +22,6 @@
     spotify
     discord
     stremio-linux-shell
-    claude-code
-    opencode
   ];
 
   wayland.windowManager.hyprland.settings = {

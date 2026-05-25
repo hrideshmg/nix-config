@@ -12,6 +12,8 @@
 
       # Floating rules
       "float, class:^(firefox)$, title:^(Library)$"
+      "float, class:^(firefox)$, title:^(OpenCode)$"
+      "float, class:^(firefox)$, title:claude"
       "float, title:^(Choose Files)$"
       "float, size 40% 40%, title:^(floating_foot)$"
       "float, title:^(Save As)$"
