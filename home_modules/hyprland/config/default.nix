@@ -12,8 +12,14 @@
 
     settings = {
       monitor = builtins.map (
-        monitor: "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, auto, ${monitor.scaling}"
+        monitor:
+        "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, ${monitor.position}, ${monitor.scaling}"
       ) monitors;
+
+      workspace = [
+        "1, monitor:${(builtins.elemAt monitors 1).name}, default:true"
+        "2, monitor:${(builtins.elemAt monitors 1).name}"
+      ];
 
       "exec-once" = [
         "hyprpaper"
