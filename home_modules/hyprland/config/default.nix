@@ -40,6 +40,7 @@
           scroll_factor = 0.9;
         };
         sensitivity = 0.1;
+        kb_options = "ctrl:nocaps";
       };
 
       device = {
