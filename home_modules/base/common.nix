@@ -19,6 +19,9 @@
 
     # file manager
     nemo-with-extensions
+
+    # misc
+    libnotify
   ];
 
   # Primary editor

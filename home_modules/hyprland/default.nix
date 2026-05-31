@@ -6,7 +6,9 @@
 }:
 {
   imports = [
-    ./services/hyprpaper.nix
+    ./waybar
+    ./hyprpaper.nix
+    ./dunst.nix
     ./config
   ];
 

@@ -7,11 +7,10 @@
     ../../home_modules/shell
     ../../home_modules/hyprland
 
-    ../../home_modules/hyprland/waybar
+    # Laptop specific modules
     ../../home_modules/hyprland/waybar/laptop_widgets.nix
-
-    ../../home_modules/hyprland/services/swaylock.nix
-    ../../home_modules/hyprland/services/power_monitor.nix
+    ../../home_modules/hyprland/modules/swaylock.nix
+    ../../home_modules/hyprland/modules/power_monitor.nix
 
     ../../home_modules/programs/coding_agents
   ];
