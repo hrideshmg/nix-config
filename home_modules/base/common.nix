@@ -8,6 +8,7 @@
     # nix
     git-crypt
     nix-index
+    nh
 
     # development
     docker
