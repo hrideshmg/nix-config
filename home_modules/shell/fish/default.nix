@@ -22,7 +22,8 @@
     };
 
     shellInit = builtins.readFile ./init.fish;
-    interactiveShellInit = builtins.readFile ./interactive.fish;
+    interactiveShellInit = builtins.readFile ./interactive.fish
+      + builtins.readFile ../../../secrets/ssh_servers.fish;
   };
 
 }
