@@ -23,6 +23,7 @@
 
     # misc
     libnotify
+    tldr
   ];
 
   # Primary editor
