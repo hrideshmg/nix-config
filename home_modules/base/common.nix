@@ -9,6 +9,7 @@
     git-crypt
     nix-index
     nh
+    devenv
 
     # development
     docker
@@ -24,6 +25,7 @@
     # misc
     libnotify
     tldr
+    ncdu
   ];
 
   # Primary editor
