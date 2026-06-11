@@ -41,6 +41,8 @@
           modules = [
             ./hosts/workstation
 
+            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -54,7 +56,6 @@
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
           ];
-          nixpkgs.overlays = [ claude-code.overlays ];
         };
 
       nixosConfigurations.zenbook14 =
@@ -65,6 +66,8 @@
           specialArgs = { inherit username; };
           modules = [
             ./hosts/zenbook14
+
+            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
 
             home-manager.nixosModules.home-manager
             {
