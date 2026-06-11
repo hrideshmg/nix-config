@@ -19,6 +19,8 @@
       "float, title:^(Save As)$"
       "float, title:^(Open)$"
       "float, title:^(blueman)$"
+      "float, title:^(KeePassXC - Browser Access Request)$"
+      "float, title:^(Open File(s)?)$"
 
       # Tiling rule
       "tile, title:^(scrcpy)$"

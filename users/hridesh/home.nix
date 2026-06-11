@@ -15,8 +15,6 @@
     ../../home_modules/programs/coding_agents
   ];
 
-  hyprland.mainMod = "ALT";
-
   home.packages = with pkgs; [
     spotify
     discord
