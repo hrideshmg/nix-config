@@ -6,6 +6,7 @@
 
     ../../home_modules/shell
     ../../home_modules/hyprland
+    ../../home_modules/programs/stremio_nogpu.nix
 
     # Laptop specific modules
     ../../home_modules/hyprland/waybar/laptop_widgets.nix
@@ -18,7 +19,6 @@
   home.packages = with pkgs; [
     spotify
     discord
-    stremio-linux-shell
   ];
 
   wayland.windowManager.hyprland.settings = {
