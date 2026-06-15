@@ -12,6 +12,7 @@
     devenv
 
     # development
+    mprocs
     docker
     python3
 
@@ -36,5 +37,12 @@
     enable = true;
     enableFishIntegration = true;
     options = [ "--cmd cd" ];
+  };
+
+  # disable middle mouse button paste
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-enable-primary-paste = false;
+    };
   };
 }

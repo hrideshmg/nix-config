@@ -6,7 +6,9 @@
   programs = {
     chromium = {
       enable = true;
-      commandLineArgs = [ "--enable-features=TouchpadOverscrollHistoryNavigation" ];
+      commandLineArgs = [
+        "--enable-features=TouchpadOverscrollHistoryNavigation --enable-blink-features=MiddleClickAutoscroll"
+      ];
     };
 
     firefox = {
