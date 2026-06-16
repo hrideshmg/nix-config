@@ -7,4 +7,7 @@
       plugin = [ "@mohak34/opencode-notifier@latest" ];
     };
   };
+  home.file.".config/opencode/AGENTS.md" = {
+    source = ./role.md;
+  };
 }
