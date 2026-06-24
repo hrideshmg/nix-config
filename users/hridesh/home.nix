@@ -14,6 +14,7 @@
     ../../home_modules/hyprland/modules/power_monitor.nix
 
     ../../home_modules/programs/coding_agents
+    ../../home_modules/programs/zathura.nix
   ];
 
   home.packages = with pkgs; [
