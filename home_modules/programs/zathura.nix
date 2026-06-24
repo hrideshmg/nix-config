@@ -13,7 +13,7 @@
 
       # zathurarc-dark
       font = "inconsolata 15";
-      default-bg = "#181a1f";
+      default-bg = "#000000";
       default-fg = "#F7F7F6";
       statusbar-fg = "#B0B0B0";
       statusbar-bg = "#202020";
@@ -33,7 +33,7 @@
       notification-fg = "#151515";
 
       recolor = true;
-      recolor-lightcolor = "#181a1f";
+      recolor-lightcolor = "#000000";
       recolor-darkcolor = "#ffffff";
       recolor-reverse-video = true;
       recolor-keephue = true;

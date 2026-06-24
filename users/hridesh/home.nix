@@ -15,6 +15,7 @@
 
     ../../home_modules/programs/coding_agents
     ../../home_modules/programs/zathura.nix
+    ../../home_modules/programs/stremio_nogpu.nix
   ];
 
   home.packages = with pkgs; [
