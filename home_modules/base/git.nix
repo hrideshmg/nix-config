@@ -4,7 +4,7 @@
 }:
 
 {
-  home.packages = [pkgs.gh];
+  home.packages = [ pkgs.gh ];
 
   programs.git = {
     enable = true;
@@ -37,6 +37,8 @@
     ignores = [
       ".aider*"
       "mprocs.yaml"
+      ".envrc"
+      ".env"
     ];
   };
 }

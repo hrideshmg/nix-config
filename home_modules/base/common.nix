@@ -15,6 +15,8 @@
     mprocs
     docker
     python3
+    linux-manual
+    man-pages
 
     # productivity
     keepassxc
