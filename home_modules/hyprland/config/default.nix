@@ -16,10 +16,14 @@
         "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, ${monitor.position}, ${monitor.scaling}"
       ) monitors;
 
-      workspace = [
-        "1, monitor:${(builtins.elemAt monitors 1).name}, default:true"
-        "2, monitor:${(builtins.elemAt monitors 1).name}"
-      ];
+      workspace =
+        if builtins.length monitors == 2 then
+          [
+            "1, monitor:${(builtins.elemAt monitors 1).name}, default:true"
+            "2, monitor:${(builtins.elemAt monitors 1).name}"
+          ]
+        else
+          [ ];
 
       "exec-once" = [
         "hyprpaper"
