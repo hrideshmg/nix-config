@@ -6,7 +6,6 @@
 
     ../../home_modules/shell
     ../../home_modules/hyprland
-    ../../home_modules/programs/stremio_nogpu.nix
 
     # Laptop specific modules
     ../../home_modules/hyprland/waybar/laptop_widgets.nix
@@ -15,7 +14,6 @@
 
     ../../home_modules/programs/coding_agents
     ../../home_modules/programs/zathura.nix
-    ../../home_modules/programs/stremio_nogpu.nix
   ];
 
   home.packages = with pkgs; [

@@ -2,9 +2,13 @@
 {
   imports = [
     ../../home_modules/base
+    ../../home_modules/base/media.nix
+
     ../../home_modules/shell
     ../../home_modules/hyprland
-    ../../home_modules/hyprland/waybar
+
+    ../../home_modules/programs/coding_agents
+    ../../home_modules/programs/zathura.nix
   ];
 
   hyprland.mainMod = "ALT";
