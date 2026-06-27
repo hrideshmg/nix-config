@@ -40,6 +40,7 @@ in
 {
   programs.claude-code = {
     enable = true;
+    agentsDir = ./agents;
     skills = {
       humanizer = ./skills/humanizer;
     };
