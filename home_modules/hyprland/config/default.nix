@@ -33,6 +33,8 @@
       env = [
         "HYPRCURSOR_THEME,McMojave"
         "HYPRCURSOR_SIZE,32"
+        # screenshots directory for grimblast
+        "XDG_SCREENSHOTS_DIR,$HOME/media/screenshots/"
       ];
 
       gesture = "3, horizontal, workspace";

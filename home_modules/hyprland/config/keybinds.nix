@@ -22,7 +22,7 @@ in
 
       # Screenshots
       ", Print, exec, grimblast copy area"
-      "SHIFT, Print, exec, grimblast save area  && notify-send -i folder-pictures 'Saved Screenshot' '~/Pictures/screenshots'"
+      "SHIFT, Print, exec, grimblast save area  && notify-send -i folder-pictures 'Saved Screenshot'"
 
       # Misc & System
       "${mainMod}, X, exec, swaylock"

@@ -33,10 +33,6 @@
       inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
-    # screenshots directory for grimblast
-    home.sessionVariables = {
-      XDG_SCREENSHOTS_DIR = "$HOME/media/screenshots/";
-    };
     home.activation.screenshotsdir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p ~/media/screenshots
     '';
