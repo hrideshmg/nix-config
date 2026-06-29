@@ -1,6 +1,6 @@
 { ... }:
 {
-  services.mako.enable = true;
+  services.dunst.enable = true;
 
   # Disable dunst from intercepting blueman messages
   dconf.settings = {

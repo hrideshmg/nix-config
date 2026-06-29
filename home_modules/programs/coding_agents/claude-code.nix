@@ -40,7 +40,11 @@ in
 {
   programs.claude-code = {
     enable = true;
-    agentsDir = ./agents;
+
+    agents = {
+      researcher = ./agents/researcher-claude.md;
+    };
+
     skills = {
       humanizer = ./skills/humanizer;
     };
@@ -49,6 +53,7 @@ in
         type = "command";
         command = "${statusline}/bin/claude-statusline";
       };
+      model = "claude-sonnet-4-6";
     };
     memory.text = builtins.readFile ./role.md;
   };
