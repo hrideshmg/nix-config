@@ -1,7 +1,7 @@
 ---
 description: Web research without bloating the main context. Use to look up facts, compare options, gather sources, or answer open-ended questions from the web. Returns a concise synthesis plus source links — not raw page dumps.
 mode: subagent
-model: openai/gpt-5.4-mini
+model: azure/gpt-5.4-mini
 permission:
   edit: deny
   bash:
