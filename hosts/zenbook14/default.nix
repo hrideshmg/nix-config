@@ -5,6 +5,7 @@
     ../../nix_modules/hyprland.nix
     ../../nix_modules/syncthing.nix
     ../../nix_modules/bluetooth.nix
+    ../../nix_modules/vpn.nix
 
     ../../nix_modules/laptop_power.nix
     ./hardware-configuration.nix
