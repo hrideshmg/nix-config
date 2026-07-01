@@ -37,7 +37,10 @@
           username = "operator";
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit username; };
+          specialArgs = {
+            inherit username;
+            inherit secrets;
+          };
           modules = [
             ./hosts/workstation
 
@@ -63,7 +66,10 @@
           username = "hridesh";
         in
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit username; };
+          specialArgs = {
+            inherit username;
+            inherit secrets;
+          };
           modules = [
             ./hosts/zenbook14
 

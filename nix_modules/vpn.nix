@@ -2,8 +2,19 @@
   pkgs,
   config,
   lib,
+  secrets,
   ...
 }:
+let
+  vpncmd = "${config.services.softether.dataDir}/vpncmd/vpncmd";
+
+  serverIP = secrets.softether.server_ip;
+  serverPort = secrets.softether.server_port;
+  accountName = secrets.softether.account_name;
+  hub = secrets.softether.hub;
+  vpnUser = secrets.softether.username;
+  vpnPassword = secrets.softether.password;
+in
 {
   services.softether = {
     enable = true;
@@ -16,6 +27,27 @@
   systemd.services.vpnclient.serviceConfig = {
     ExecStart = lib.mkForce "${config.services.softether.dataDir}/vpnclient/vpnclient start";
     ExecStop = lib.mkForce "${config.services.softether.dataDir}/vpnclient/vpnclient stop";
+  };
+
+  systemd.services.vpnclient-account-setup = {
+    description = "Provision SoftEther VPN client account";
+    after = [ "vpnclient.service" ];
+    requires = [ "vpnclient.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      set -eu
+      if ! ${vpncmd} localhost /client /cmd AccountList | grep -q "${accountName}"; then
+        ${vpncmd} localhost /client /cmd AccountCreate ${accountName} \
+          /SERVER:${serverIP}:${serverPort} /HUB:${hub} /USERNAME:${vpnUser} /NICNAME:softether
+      fi
+
+      ${vpncmd} localhost /client /cmd AccountPasswordSet ${accountName} \
+        /PASSWORD:"${vpnPassword}" /TYPE:standard
+    '';
   };
 
   networking.networkmanager = {
@@ -36,12 +68,12 @@
         source = pkgs.writeText "upHook" ''
           INTERFACE=$1
           ACTION=$2
-          ACCOUNT_NAME="<account_name>"
-          TARGET_IP="<target_ip>/32"
+          ACCOUNT_NAME="${accountName}"
+          TARGET_IP="${serverIP}/32"
           VPN_GATEWAY="192.168.30.1"    # Default gateway for softether virtual hubs
           VPN_INTERFACE="vpn_softether" # NIC created by softether
 
-          if [[ "$INTERFACE" == "vpn_on" ]]; then  # vpn_on refers to the dummy nmcli connection 
+          if [[ "$INTERFACE" == "vpn_on" ]]; then  # vpn_on refers to the dummy nmcli connection
           case "$ACTION" in
           up)
               if ip route show default via "$VPN_GATEWAY" | grep -q .; then
