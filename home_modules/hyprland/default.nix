@@ -10,6 +10,7 @@
     ./hyprpaper.nix
     ./dunst.nix
     ./config
+    ./rofi.nix
   ];
 
   # this creates a custom nixos option available at config.hyprland.mainMod
@@ -25,10 +26,6 @@
       grimblast
       wl-clipboard
 
-      # rofi plugins
-      rofimoji
-      networkmanager_dmenu
-
       # cursor theme
       inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
@@ -43,15 +40,6 @@
         name = "Arc-Dark";
         package = pkgs.arc-theme;
       };
-    };
-
-    programs.rofi = {
-      enable = true;
-      theme = "Arc-Dark";
-      plugins = with pkgs; [
-        # Add a calculator to rofi
-        rofi-calc
-      ];
     };
   };
 }
