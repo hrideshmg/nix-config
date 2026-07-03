@@ -4,13 +4,9 @@
     enable = true;
     settings = {
       # Nix will convert these to /nix/store/... paths automatically
-      preload = [
-        "${../../wallpapers/anime_night.png}"
-        "${../../wallpapers/unit01.png}"
-        "${../../wallpapers/rei_field.png}"
-        "${../../wallpapers/astro_girl.png}"
-        "${../../wallpapers/firewatch_oled.png}"
-      ];
+      preload = builtins.map (name: "${../../wallpapers + "/${name}"}") (
+        builtins.attrNames (builtins.readDir ../../wallpapers)
+      );
 
       wallpaper = map (monitor: "${monitor.name},${monitor.wallpaper}") monitors;
     };

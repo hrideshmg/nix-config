@@ -4,7 +4,7 @@
     resolution = "2880x1800";
     position = "auto";
     refresh = "120";
-    wallpaper = "contain:${../../wallpapers/firewatch_oled.png}";
+    wallpaper = "contain:${../../wallpapers/anime_night_16_10.png}";
     scaling = "1.8";
   }
 
