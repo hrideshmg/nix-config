@@ -40,7 +40,6 @@ in
 {
   programs.claude-code = {
     enable = true;
-
     agents = {
       researcher = ./agents/researcher-claude.md;
     };
@@ -54,6 +53,18 @@ in
         command = "${statusline}/bin/claude-statusline";
       };
       model = "claude-sonnet-4-6";
+      hooks = {
+        Stop = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "notify-send 'Claude Code' 'Session Completed'";
+              }
+            ];
+          }
+        ];
+      };
     };
     memory.text = builtins.readFile ./role.md;
   };
