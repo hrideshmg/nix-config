@@ -64,6 +64,16 @@ in
             ];
           }
         ];
+        Notification = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "notify-send 'Claude Code' 'Has A Question'";
+              }
+            ];
+          }
+        ];
       };
     };
     memory.text = builtins.readFile ./role.md;
