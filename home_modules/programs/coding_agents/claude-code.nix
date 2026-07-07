@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ secrets, pkgs, ... }:
 let
   statusline = pkgs.writeShellApplication {
     name = "claude-statusline";
@@ -48,6 +48,11 @@ in
       humanizer = ./skills/humanizer;
     };
     settings = {
+      env = {
+        CLAUDE_CODE_USE_BEDROCK = 1;
+        AWS_REGION = "ap-south-1";
+        AWS_BEARER_TOKEN_BEDROCK = secrets.claude.bedrock_key;
+      };
       statusLine = {
         type = "command";
         command = "${statusline}/bin/claude-statusline";
