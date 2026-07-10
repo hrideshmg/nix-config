@@ -38,6 +38,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.fish;
   };
@@ -71,6 +72,7 @@
   ];
 
   programs.fish.enable = true;
+  virtualisation.docker.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka

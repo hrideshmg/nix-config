@@ -57,7 +57,7 @@ in
         type = "command";
         command = "${statusline}/bin/claude-statusline";
       };
-      model = "claude-sonnet-4-6";
+      model = "global.anthropic.claude-sonnet-4-6 ";
       hooks = {
         Stop = [
           {

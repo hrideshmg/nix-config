@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: Web research without bloating the main context. Use to look up facts, compare options, gather sources, or answer open-ended questions from the web. Returns a concise synthesis plus source links — not raw page dumps.
+description: Fallback web research agent. Only use when Claude's built-in WebSearch tool has already been tried and failed to return accurate, up-to-date, or sufficiently detailed information. Do not use as a first resort — try WebSearch first. When WebSearch results are  missing, blocked, or contradicted by the user, escalate to this agent.
 tools: [Bash(npx firecrawl-cli@* *), Bash(mkdir *), Bash(jq *), Bash(grep *), Bash(head *), Bash(wc *)]
 model: sonnet
 ---
