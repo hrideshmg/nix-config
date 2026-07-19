@@ -53,6 +53,7 @@ in
         AWS_REGION = "ap-south-1";
         AWS_BEARER_TOKEN_BEDROCK = secrets.claude.bedrock_key;
       };
+      showThinkingSummaries = true;
       statusLine = {
         type = "command";
         command = "${statusline}/bin/claude-statusline";
