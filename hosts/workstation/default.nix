@@ -1,5 +1,6 @@
 {
   username,
+  pkgs,
   ...
 }:
 
@@ -11,6 +12,10 @@
     ../../nix_modules/vnc-web.nix
 
     ./hardware-configuration.nix
+  ];
+
+  environment.systemPackages = [
+    pkgs.cloudflared
   ];
 
   swapDevices = [
@@ -38,13 +43,6 @@
 
     networkmanager.enable = true;
   };
-
-  networking.firewall.allowedTCPPorts = [
-    # websockify/noVNC
-    8443
-    # wayVNC
-    5900
-  ];
 
   services.greetd.settings = {
     initial_session = {

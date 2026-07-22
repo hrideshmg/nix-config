@@ -27,6 +27,7 @@
     libnotify
     tldr
     ncdu
+    imv
   ];
 
   # Primary editor
