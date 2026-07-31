@@ -52,13 +52,14 @@ in
         CLAUDE_CODE_USE_BEDROCK = 1;
         AWS_REGION = "ap-south-1";
         AWS_BEARER_TOKEN_BEDROCK = secrets.claude.bedrock_key;
+        ANTHROPIC_DEFAULT_OPUS_MODEL = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/tj9k6gufllq3";
       };
       showThinkingSummaries = true;
       statusLine = {
         type = "command";
         command = "${statusline}/bin/claude-statusline";
       };
-      model = "global.anthropic.claude-sonnet-4-6 ";
+      model = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq";
       hooks = {
         Stop = [
           {

@@ -50,7 +50,7 @@
 
           printf '%s\n' \
             '{' \
-            '  "showThinkingSummaries": true, '\
+            '  "showThinkingSummaries": true, ' \
             '  "statusLine": {' \
             '    "type": "command",' \
             '    "command": "$PWD/.claude/statusline.sh",' \
@@ -60,15 +60,15 @@
             > "$PWD/.claude/settings.local.json"
 
           docker run -it --rm \
-            --user node \
-            --cap-drop=ALL \
-            --security-opt=no-new-privileges \
+            -u root \
             -e HOME=/home/node \
             -e FIRECRAWL_API_KEY=${secrets.firecrawl.api_key} \
             -e CLAUDE_CODE_USE_BEDROCK=1 \
             -e AWS_BEARER_TOKEN_BEDROCK=${secrets.claude.bedrock_key} \
             -e AWS_REGION=ap-south-1 \
-            -e ANTHROPIC_MODEL=global.anthropic.claude-sonnet-4-6 \
+            -e ANTHROPIC_MODEL=arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq \
+            -e ANTHROPIC_DEFAULT_OPUS_MODEL=arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/tj9k6gufllq3 \
+            -e IS_SANDBOX=1 \
             -v "$PWD:$PWD" \
             -v claude-code-state:/home/node \
             -v ~/.claude/projects:/home/node/.claude/projects \
@@ -76,7 +76,7 @@
             -v "$RUNTIME_DIR/agents:/home/node/.claude/agents:ro" \
             -w "$PWD" \
             hrideshmg/claudebox \
-            npx -y @anthropic-ai/claude-code --dangerously-skip-permissions
+            bash -c "apt-get update -qq && apt-get install -y -qq sudo >/dev/null 2>&1 || true; echo 'node ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/node-nopasswd && npx -y @anthropic-ai/claude-code --dangerously-skip-permissions"
 
           rm -rf "$RUNTIME_DIR"
         '';

@@ -12,6 +12,7 @@
 
       # Floating rules
       "float, class:^(firefox)$, title:^(Library)$"
+      "float, class:^(.blueman-manager-wrapped)$"
       "float, class:^(firefox)$, title:^(OpenCode)$"
       "float, class:^(firefox)$, title:claude"
       "float, size 40% 40%, title:^(floating_foot)$"

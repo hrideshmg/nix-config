@@ -22,6 +22,8 @@
 
   config = {
     home.packages = with pkgs; [
+      hyprpolkitagent
+
       # Utils
       grimblast
       wl-clipboard

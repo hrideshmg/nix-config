@@ -29,27 +29,6 @@ Always create the output directory first:
 mkdir -p .firecrawl
 ```
 
-## Credit discipline (read first)
-
-Firecrawl credits are the scarce resource, and the whole point of this agent is
-to answer cheaply. Cost model:
-
-- plain `search` → ~1 credit
-- `scrape` → ~1 credit **per page**
-- `search --scrape` → ~`limit` credits (it scrapes *every* result)
-
-Rules:
-
-- **Never `--scrape` a discovery search.** Discovery only needs titles/URLs/
-  snippets, which a plain search returns for free. Triage the snippets, then
-  scrape only the finalists.
-- **Budget: ≤5 searches and ≤15 scrapes per task.** If you still can't answer
-  after that, return what you have and flag the gap — don't keep spending.
-- **Dedup before every scrape** — never fetch a URL you already have:
-  ```bash
-  ls .firecrawl/ 2>/dev/null   # scan first; reuse existing files
-  ```
-
 ## How to work
 
 Follow this escalation — stop as soon as you can answer confidently:
@@ -66,7 +45,7 @@ Follow this escalation — stop as soon as you can answer confidently:
    Only reach for `--scrape` when a snippet genuinely can't settle a *specific*
    claim and you'd scrape most of the results anyway — and cap it hard
    (`--limit 3`). Otherwise, do a plain search and scrape the 2–3 URLs you chose
-   (step 3). See "Credit discipline" above.
+   (step 3).
 
 2. **Map a site** — when you know *which site* has the answer but not *which page*,
    map it to find the right URL before scraping. Cheaper than crawling the whole site.
@@ -112,17 +91,6 @@ Follow this escalation — stop as soon as you can answer confidently:
 
 6. **Cross-check claims** when sources conflict or accuracy matters. Note
    disagreements rather than silently picking one.
-
-7. **Send search feedback** after you're done using a search result (refunds
-   1 credit, runs in background — don't wait for it):
-
-   ```bash
-   SEARCH_ID=$(jq -r '.id' .firecrawl/search.json)
-   npx firecrawl-cli@latest search-feedback "$SEARCH_ID" \
-     --rating good \
-     --valuable-sources '[{"url":"<best-url>","reason":"<why>"}]' \
-     --silent &
-   ```
 
 ## Source selection
 
