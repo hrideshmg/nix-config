@@ -55,6 +55,11 @@
             '    "type": "command",' \
             '    "command": "$PWD/.claude/statusline.sh",' \
             '    "padding": 0' \
+            '  },' \
+            '  "modelOverrides": {' \
+            '    "claude-opus-5": "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/6iokgd5wzjbi",' \
+            '    "claude-opus-4-8": "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/tj9k6gufllq3",' \
+            '    "claude-fable-5": "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/o7s40nvrp1fd"' \
             '  }' \
             '}' \
             > "$PWD/.claude/settings.local.json"
@@ -67,7 +72,6 @@
             -e AWS_BEARER_TOKEN_BEDROCK=${secrets.claude.bedrock_key} \
             -e AWS_REGION=ap-south-1 \
             -e ANTHROPIC_MODEL=arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq \
-            -e ANTHROPIC_DEFAULT_OPUS_MODEL=arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/tj9k6gufllq3 \
             -e IS_SANDBOX=1 \
             -v "$PWD:$PWD" \
             -v claude-code-state:/home/node \
