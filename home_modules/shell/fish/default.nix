@@ -65,7 +65,6 @@
             > "$PWD/.claude/settings.local.json"
 
           docker run -it --rm \
-            -u root \
             -e HOME=/home/node \
             -e FIRECRAWL_API_KEY=${secrets.firecrawl.api_key} \
             -e CLAUDE_CODE_USE_BEDROCK=1 \
@@ -80,7 +79,7 @@
             -v "$RUNTIME_DIR/agents:/home/node/.claude/agents:ro" \
             -w "$PWD" \
             hrideshmg/claudebox \
-            bash -c "apt-get update -qq && apt-get install -y -qq sudo >/dev/null 2>&1 || true; echo 'node ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/node-nopasswd && npx -y @anthropic-ai/claude-code --dangerously-skip-permissions"
+            npx -y @anthropic-ai/claude-code --dangerously-skip-permissions
 
           rm -rf "$RUNTIME_DIR"
         '';
