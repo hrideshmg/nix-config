@@ -3,111 +3,76 @@ let
   mainMod = config.hyprland.mainMod;
 in
 {
-  wayland.windowManager.hyprland.settings = {
-    # --- Keybinds ---
-    bind = [
-      # Launch Apps
-      "${mainMod}, Z, exec, spotify --disable-gpu"
-      "${mainMod}, B, exec, firefox"
-      "${mainMod}, N, exec, obsidian --disable-gpu"
+  wayland.windowManager.hyprland.extraConfig = ''
+    local mainMod = "${mainMod}"
 
-      "${mainMod}, I, exec, networkmanager_dmenu -i"
-      "${mainMod}, W, exec, rofi -i -show window"
-      "${mainMod}, R, exec, rofi -i -show drun"
-      "${mainMod}, E, exec, rofi -show calc -modi calc -no-show-match -no-sort"
-      "${mainMod}, period, exec, rofimoji --skin-tone neutral"
+    hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("spotify --disable-gpu"))
+    hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
+    hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("obsidian --disable-gpu"))
 
-      "${mainMod}, Return, exec, foot"
-      "${mainMod} SHIFT, Return, exec, foot --title floating_foot"
+    hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("networkmanager_dmenu -i"))
+    hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("rofi -i -show window"))
+    hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -i -show drun"))
+    hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("rofi -show calc -modi calc -no-show-match -no-sort"))
+    hl.bind(mainMod .. " + period", hl.dsp.exec_cmd("rofimoji --skin-tone neutral"))
 
-      # Screenshots
-      ", Print, exec, grimblast copy area"
-      "SHIFT, Print, exec, grimblast save area  && notify-send -i folder-pictures 'Saved Screenshot'"
+    hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("foot"))
+    hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("foot --title floating_foot"))
 
-      # Misc & System
-      "${mainMod}, X, exec, swaylock"
+    hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area"))
+    hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grimblast save area && notify-send -i folder-pictures 'Saved Screenshot'"))
 
-      # Media Keys
-      ", XF86AudioPlay, exec, playerctl -p spotify,firefox,%any play-pause"
-      ", XF86AudioPause, exec, playerctl -p spotify,firefox,%any play-pause"
-      ", XF86AudioPrev, exec, playerctl previous"
-      ", XF86AudioNext, exec, playerctl next"
+    hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("swaylock"))
 
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+"
+    hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl -p spotify,firefox,%any play-pause"), { locked = true })
+    hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl -p spotify,firefox,%any play-pause"), { locked = true })
+    hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+    hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+    hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"), { locked = true, repeating = true })
+    hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+"), { locked = true, repeating = true })
 
-      # Window Management
-      "${mainMod}, Q, killactive,"
-      "${mainMod} SHIFT, Q, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit "
-      "${mainMod}, SPACE, togglefloating,"
-      "${mainMod}, S, togglesplit,"
-      "${mainMod}, M, fullscreen, 1"
-      "${mainMod} SHIFT, M, fullscreen, 2"
-      "${mainMod}, O, exec, hyprctl dispatch setprop active opaque toggle"
+    hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+    hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
+    hl.bind(mainMod .. " + SPACE", hl.dsp.window.float({ action = "toggle" }))
+    hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit"))
+    hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
+    hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+    hl.bind(mainMod .. " + O", hl.dsp.window.set_prop({ window = "activewindow", prop = "opaque", value = "toggle" }))
 
-      # Special Workspace
-      "${mainMod}, a, togglespecialworkspace"
-      "${mainMod} SHIFT, a, movetoworkspace, special"
-      "${mainMod}, c, exec, hyprctl dispatch centerwindow"
+    hl.bind(mainMod .. " + a", hl.dsp.workspace.toggle_special(""))
+    hl.bind(mainMod .. " + SHIFT + a", hl.dsp.window.move({ workspace = "special" }))
+    hl.bind(mainMod .. " + c", hl.dsp.window.center())
 
-      # Move focus (Vim keys)
-      "${mainMod}, H, movefocus, l"
-      "${mainMod}, L, movefocus, r"
-      "${mainMod}, K, movefocus, u"
-      "${mainMod}, J, movefocus, d"
+    hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+    hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+    hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+    hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
-      # Move Windows
-      "${mainMod} SHIFT, H, movewindow, l"
-      "${mainMod} SHIFT, L, movewindow, r"
-      "${mainMod} SHIFT, K, movewindow, u"
-      "${mainMod} SHIFT, J, movewindow, d"
+    hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
+    hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+    hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+    hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 
-      # Resize Windows (Fine)
-      "${mainMod} CTRL, H, resizeactive, -5% 0"
-      "${mainMod} CTRL, L, resizeactive, 5% 0"
-      "${mainMod} CTRL, K, resizeactive, 0 -20"
-      "${mainMod} CTRL, J, resizeactive, 0 5%"
+    hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + CTRL + L", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
 
-      # Resize Windows (Coarse)
-      "${mainMod} SHIFT CTRL, H, resizeactive, -20% 0"
-      "${mainMod} SHIFT CTRL, L, resizeactive, 20% 0"
-      "${mainMod} SHIFT CTRL, K, resizeactive, 0 -20%"
-      "${mainMod} SHIFT CTRL, J, resizeactive, 0 20%"
+    hl.bind(mainMod .. " + SHIFT + CTRL + H", hl.dsp.window.resize({ x = -80, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.window.resize({ x = 80, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + SHIFT + CTRL + K", hl.dsp.window.resize({ x = 0, y = -80, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + SHIFT + CTRL + J", hl.dsp.window.resize({ x = 0, y = 80, relative = true }), { repeating = true })
 
-      # Workspaces (Switching)
-      "${mainMod}, 1, workspace, 1"
-      "${mainMod}, 2, workspace, 2"
-      "${mainMod}, 3, workspace, 3"
-      "${mainMod}, 4, workspace, 4"
-      "${mainMod}, 5, workspace, 5"
-      "${mainMod}, 6, workspace, 6"
-      "${mainMod}, 7, workspace, 7"
-      "${mainMod}, 8, workspace, 8"
-      "${mainMod}, 9, workspace, 9"
-      "${mainMod}, 0, workspace, 10"
+    for workspace = 1, 10 do
+      local key = workspace % 10
+      hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = workspace }))
+      hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace }))
+    end
 
-      # Move to Workspace
-      "${mainMod} SHIFT, 1, movetoworkspace, 1"
-      "${mainMod} SHIFT, 2, movetoworkspace, 2"
-      "${mainMod} SHIFT, 3, movetoworkspace, 3"
-      "${mainMod} SHIFT, 4, movetoworkspace, 4"
-      "${mainMod} SHIFT, 5, movetoworkspace, 5"
-      "${mainMod} SHIFT, 6, movetoworkspace, 6"
-      "${mainMod} SHIFT, 7, movetoworkspace, 7"
-      "${mainMod} SHIFT, 8, movetoworkspace, 8"
-      "${mainMod} SHIFT, 9, movetoworkspace, 9"
-      "${mainMod} SHIFT, 0, movetoworkspace, 10"
-    ];
+    hl.bind(mainMod .. " + Down", hl.dsp.exec_cmd("brightnessctl --min-value=2 s 3%- -n 1"), { repeating = true })
+    hl.bind(mainMod .. " + Up", hl.dsp.exec_cmd("brightnessctl s +3% -n 1"), { repeating = true })
 
-    binde = [
-      "${mainMod}, Down, exec, brightnessctl --min-value=2 s 3%- -n 1"
-      "${mainMod}, Up, exec, brightnessctl s +3% -n 1"
-    ];
-
-    bindm = [
-      # Move/resize windows with mainMod + LMB/RMB and dragging
-      "${mainMod}, mouse:272, movewindow"
-      "${mainMod}, mouse:273, resizewindow"
-    ];
-  };
+    hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+    hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+  '';
 }

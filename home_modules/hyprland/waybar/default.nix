@@ -34,7 +34,6 @@
 
         "hyprland/workspaces" = {
           format = "{icon}";
-          on-click = "activate";
           format-icons = {
             "1" = "";
             "2" = "";

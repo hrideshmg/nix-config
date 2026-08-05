@@ -1,4 +1,27 @@
 { monitors, ... }:
+let
+  monitorConfig = builtins.concatStringsSep "\n" (
+    builtins.map (monitor: ''
+      hl.monitor({
+        output = "${monitor.name}",
+        mode = "${monitor.resolution}@${monitor.refresh}",
+        position = "${monitor.position}",
+        scale = ${monitor.scaling},
+      })
+    '') monitors
+  );
+  workspaceConfig =
+    if builtins.length monitors == 2 then
+      let
+        primaryMonitor = (builtins.elemAt monitors 0).name;
+      in
+      ''
+        hl.workspace_rule({ workspace = "1", monitor = "${primaryMonitor}", default = true })
+        hl.workspace_rule({ workspace = "2", monitor = "${primaryMonitor}" })
+      ''
+    else
+      "";
+in
 {
   imports = [
     ./appearance.nix
@@ -8,65 +31,63 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
+    package = null;
+    portalPackage = null;
     systemd.enable = true;
 
-    settings = {
-      monitor = builtins.map (
-        monitor:
-        "${monitor.name}, ${monitor.resolution}@${monitor.refresh}, ${monitor.position}, ${monitor.scaling}"
-      ) monitors;
+    extraConfig = ''
+      ${monitorConfig}
+      ${workspaceConfig}
 
-      workspace =
-        if builtins.length monitors == 2 then
-          [
-            "1, monitor:${(builtins.elemAt monitors 0).name}, default:true"
-            "2, monitor:${(builtins.elemAt monitors 0).name}"
-          ]
-        else
-          [ ];
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("hyprpaper")
+        hl.exec_cmd("waybar")
+      end)
 
-      "exec-once" = [
-        "hyprpaper"
-        "waybar"
-      ];
+      hl.env("HYPRCURSOR_THEME", "McMojave")
+      hl.env("HYPRCURSOR_SIZE", "32")
+      hl.env("XDG_SCREENSHOTS_DIR", os.getenv("HOME") .. "/media/screenshots/")
 
-      env = [
-        "HYPRCURSOR_THEME,McMojave"
-        "HYPRCURSOR_SIZE,32"
-        # screenshots directory for grimblast
-        "XDG_SCREENSHOTS_DIR,$HOME/media/screenshots/"
-      ];
+      hl.gesture({
+        fingers = 3,
+        direction = "horizontal",
+        action = "workspace",
+      })
 
-      gesture = "3, horizontal, workspace";
+      hl.config({
+        input = {
+          numlock_by_default = true,
+          touchpad = {
+            natural_scroll = true,
+            scroll_factor = 0.9,
+          },
+          sensitivity = 0.1,
+          kb_options = "ctrl:nocaps",
+        },
+        dwindle = {
+          force_split = 2,
+          preserve_split = true,
+        },
+        binds = {
+          movefocus_cycles_fullscreen = true,
+        },
+        misc = {
+          disable_hyprland_logo = true,
+          disable_splash_rendering = true,
+        },
+        xwayland = {
+          force_zero_scaling = true,
+        },
+        cursor = {
+          inactive_timeout = 10,
+        },
+      })
 
-      input = {
-        numlock_by_default = true;
-        touchpad = {
-          natural_scroll = true;
-          scroll_factor = 0.9;
-        };
-        sensitivity = 0.1;
-        kb_options = "ctrl:nocaps";
-      };
-
-      device = {
-        name = "logitech-g102-prodigy-gaming-mouse";
-        sensitivity = -0.4;
-      };
-
-      # --- Layouts & Misc ---
-      dwindle = {
-        force_split = 2;
-        preserve_split = true;
-      };
-
-      binds = {
-        movefocus_cycles_fullscreen = true;
-      };
-
-      misc.disable_hyprland_logo = true;
-      xwayland.force_zero_scaling = true;
-      cursor.inactive_timeout = 10;
-    };
+      hl.device({
+        name = "logitech-g102-prodigy-gaming-mouse",
+        sensitivity = -0.4,
+      })
+    '';
   };
 }

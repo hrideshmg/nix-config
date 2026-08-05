@@ -13,6 +13,7 @@
 
     firefox = {
       enable = true;
+      configPath = ".mozilla/firefox";
       profiles.${username} = {
         settings = {
           # Set a custom download directory

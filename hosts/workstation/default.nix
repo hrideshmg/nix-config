@@ -46,7 +46,7 @@
 
   services.greetd.settings = {
     initial_session = {
-      command = "Hyprland";
+      command = "start-hyprland";
       user = username;
     };
   };

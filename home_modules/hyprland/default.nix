@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   inputs,
   pkgs,
@@ -42,6 +43,7 @@
         name = "Arc-Dark";
         package = pkgs.arc-theme;
       };
+      gtk4.theme = config.gtk.theme;
     };
   };
 }

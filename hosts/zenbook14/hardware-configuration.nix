@@ -24,18 +24,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernelParams = [ "amd_pstate=active" ];
-  boot.kernelPackages = pkgs.linuxPackagesFor (
-    pkgs.linux_6_12.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-          url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-          sha256 = "sha256-7e8isyfHy/Oc2/jXF//6NE8copnlE5kOIXBbO/Jtu10=";
-        };
-        version = "6.12.86";
-        modDirVersion = "6.12.86";
-      };
-    }
-  );
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

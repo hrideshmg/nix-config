@@ -28,5 +28,11 @@
     };
   };
 
-  wayland.windowManager.hyprland.settings.cursor.no_hardware_cursors = true;
+  wayland.windowManager.hyprland.extraConfig = ''
+    hl.config({
+      cursor = {
+        no_hardware_cursors = "Enabled",
+      },
+    })
+  '';
 }

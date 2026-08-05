@@ -6,7 +6,7 @@
       main = {
         font = "Iosevka NFM:size=14";
       };
-      colors = {
+      colors-dark = {
         background = "2B2E37";
         cursor = "2B2E37 FFFFFF";
       };

@@ -43,7 +43,6 @@ in
     agents = {
       researcher = ./agents/researcher-claude.md;
     };
-
     skills = {
       humanizer = ./skills/humanizer;
     };
@@ -83,6 +82,6 @@ in
         ];
       };
     };
-    memory.text = builtins.readFile ./role.md;
+    context = ./role.md;
   };
 }
