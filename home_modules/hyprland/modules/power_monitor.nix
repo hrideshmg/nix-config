@@ -15,12 +15,12 @@ let
 
       if [[ "$ac_online" == "1" ]]; then
         echo "AC Power: Setting to ${monitor.refresh}Hz."
-        ${pkgs.hyprland}/bin/hyprctl keyword monitor "${monitor.name},${monitor.resolution}@${monitor.refresh},auto,${monitor.scaling}"
+        ${pkgs.hyprland}/bin/hyprctl eval 'hl.monitor({output="eDP-1", mode="2880x1800@120"})'
         powerprofilesctl set performance
         sleep 3
       else
         echo "Battery Power: Setting to 60Hz."
-        ${pkgs.hyprland}/bin/hyprctl keyword monitor "${monitor.name},${monitor.resolution}@60,auto,${monitor.scaling}"
+        ${pkgs.hyprland}/bin/hyprctl eval 'hl.monitor({output="eDP-1", mode="2880x1800@60"})'
         powerprofilesctl set power-saver
         sleep 3
       fi
