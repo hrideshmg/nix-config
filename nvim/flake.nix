@@ -55,6 +55,7 @@
               gopls
               nixd
               nixfmt
+              lemminx
 
               stylua
               prettier

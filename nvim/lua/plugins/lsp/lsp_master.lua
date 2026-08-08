@@ -88,6 +88,7 @@ return {
         'docker_compose_language_service',
         'gopls',
         'clangd',
+        'lemminx',
       }
       if require('nixCatsUtils').isNixCats then
         table.insert(servers, 'nixd')
