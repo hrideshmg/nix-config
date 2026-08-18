@@ -50,6 +50,7 @@
               jdt-language-server
               docker-language-server
               docker-compose-language-service
+              typescript-language-server
               clang-tools
               ripgrep
               gopls

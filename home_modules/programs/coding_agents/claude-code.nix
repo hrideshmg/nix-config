@@ -58,6 +58,7 @@ in
         type = "command";
         command = "${statusline}/bin/claude-statusline";
       };
+      effortLevel = "medium";
       model = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq";
       hooks = {
         Stop = [

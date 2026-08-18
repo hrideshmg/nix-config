@@ -89,6 +89,7 @@ return {
         'gopls',
         'clangd',
         'lemminx',
+        'ts_ls',
       }
       if require('nixCatsUtils').isNixCats then
         table.insert(servers, 'nixd')
