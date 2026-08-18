@@ -13,7 +13,7 @@ let
   workspaceConfig =
     if builtins.length monitors == 2 then
       let
-        primaryMonitor = (builtins.elemAt monitors 0).name;
+        primaryMonitor = (builtins.elemAt monitors 1).name;
       in
       ''
         hl.workspace_rule({ workspace = "1", monitor = "${primaryMonitor}", default = true })
