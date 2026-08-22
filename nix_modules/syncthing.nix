@@ -24,7 +24,7 @@
           path = "/home/${username}/documents/obsidian-vault";
           devices = [
             "Nothing 3A"
-            "Citaldel"
+            "Citadel"
           ];
         };
         "keepass_sync" = {

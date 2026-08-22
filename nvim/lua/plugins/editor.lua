@@ -125,7 +125,7 @@ return {
           end
 
           -- default mappings
-          api.config.mappings.default_on_attach(bufnr)
+          api.map.on_attach.default(bufnr)
 
           -- custom mappings
           local keybinds = require 'keybinds'
