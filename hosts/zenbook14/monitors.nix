@@ -16,4 +16,13 @@
     wallpaper = "${../../wallpapers/firewatch_oled.png}";
     scaling = "1";
   }
+
+  {
+    name = "DP-8";
+    resolution = "3840x2560";
+    position = "auto-center-right";
+    refresh = "60";
+    wallpaper = "${../../wallpapers/rei_field.png}";
+    scaling = "1.6";
+  }
 ]

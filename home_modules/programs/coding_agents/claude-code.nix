@@ -38,6 +38,7 @@ let
   };
 in
 {
+  home.packages = [ pkgs.mcp-nixos ];
   programs.claude-code = {
     enable = true;
     agents = {
@@ -45,6 +46,14 @@ in
     };
     skills = {
       humanizer = ./skills/humanizer;
+    };
+    mcpServers = {
+      nixos = {
+        command = "mcp-nixos";
+        args = [
+          "--"
+        ];
+      };
     };
     settings = {
       env = {
