@@ -4,14 +4,14 @@
     resolution = "2880x1800";
     position = "auto";
     refresh = "120";
-    wallpaper = "${../../wallpapers/firewatch_oled.png}";
+    wallpaper = "${../../wallpapers/rocket_16_10.jpg}";
     scaling = "1.8";
   }
 
   {
     name = "HDMI-A-1";
     resolution = "1920x1080";
-    position = "auto-center-left";
+    position = "auto-center-up";
     refresh = "60";
     wallpaper = "${../../wallpapers/firewatch_oled.png}";
     scaling = "1";

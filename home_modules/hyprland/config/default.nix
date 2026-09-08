@@ -11,7 +11,7 @@ let
     '') monitors
   );
   workspaceConfig =
-    if builtins.length monitors == 2 then
+    if builtins.length monitors > 1 then
       let
         primaryMonitor = (builtins.elemAt monitors 1).name;
       in

@@ -15,6 +15,7 @@
     mprocs
     docker
     python3
+    bruno
 
     # productivity
     keepassxc

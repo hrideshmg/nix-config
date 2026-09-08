@@ -1,4 +1,9 @@
-{ secrets, pkgs, lib, ... }:
+{
+  secrets,
+  pkgs,
+  lib,
+  ...
+}:
 let
   statusline = pkgs.writeShellApplication {
     name = "claude-statusline";
@@ -95,7 +100,7 @@ in
     context = ./role.md;
   };
 
-  home.activation.makeClaudeSettingsWritable = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.makeClaudeSettingsWritable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     if [ -L "$HOME/.claude/settings.json" ]; then
       target=$(readlink "$HOME/.claude/settings.json")
       cp "$target" "$HOME/.claude/settings.json.tmp.$$"
