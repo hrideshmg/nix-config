@@ -6,13 +6,10 @@
       researcher = ./agents/researcher-opencode.md;
     };
     settings = {
-      model = "azure/gpt-5.4";
-      small_model = "azure/gpt-5.4-mini";
+      model = "azure/gpt-5.6-terra";
+      small_model = "azure/gpt-5.6-luna";
       plugin = [ "@mohak34/opencode-notifier@latest" ];
     };
-  };
-  home.file.".config/opencode/AGENTS.md" = {
-    source = ./role.md;
   };
 
   home.sessionVariables = {

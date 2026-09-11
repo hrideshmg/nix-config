@@ -15,6 +15,7 @@
 
     mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor";
     claude-code.url = "github:sadjow/claude-code-nix";
+    opencode.url = "github:hrideshmg/opencode-nix";
   };
 
   outputs =
@@ -24,6 +25,7 @@
       home-manager,
       nvim-pkg,
       claude-code,
+      opencode,
       ...
     }@inputs:
     let
@@ -44,7 +46,12 @@
           modules = [
             ./hosts/workstation
 
-            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+            {
+              nixpkgs.overlays = [
+                claude-code.overlays.default
+                opencode.overlays.default
+              ];
+            }
 
             home-manager.nixosModules.home-manager
             {
@@ -73,7 +80,12 @@
           modules = [
             ./hosts/zenbook14
 
-            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+            {
+              nixpkgs.overlays = [
+                claude-code.overlays.default
+                opencode.overlays.default
+              ];
+            }
 
             home-manager.nixosModules.home-manager
             {
