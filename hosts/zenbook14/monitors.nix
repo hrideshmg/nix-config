@@ -13,7 +13,7 @@
     resolution = "1920x1080";
     position = "auto-center-up";
     refresh = "60";
-    wallpaper = "${../../wallpapers/firewatch_oled.png}";
+    wallpaper = "${../../wallpapers/firewatch_oled_16_9.jpg}";
     scaling = "1";
   }
 
