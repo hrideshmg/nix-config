@@ -114,8 +114,9 @@
 
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
-              conform-nvim
-            ];
+               conform-nvim
+               csvview-nvim
+             ];
           };
 
           # not loaded automatically at startup.
