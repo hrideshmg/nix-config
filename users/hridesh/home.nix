@@ -25,7 +25,7 @@
 
   wayland.windowManager.hyprland.extraConfig = ''
     hl.on("hyprland.start", function()
-      hl.exec_cmd("wlsunset -l 9.9 -L 76.2 -t 4600")
+      hl.exec_cmd("wlsunset -l 9.9 -L 76.2 -t 4000")
       hl.exec_cmd("discord --start-minimized --disable-gpu")
     end)
   '';
