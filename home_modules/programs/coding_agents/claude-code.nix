@@ -68,8 +68,8 @@ in
       #  ANTHROPIC_DEFAULT_OPUS_MODEL = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/tj9k6gufllq3";
       #};
       env = {
-        ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-4-8";
-        ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-sonnet-4-6";
+        #ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-4-8";
+        #ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-sonnet-4-6";
       };
       showThinkingSummaries = true;
       statusLine = {
@@ -78,7 +78,7 @@ in
       };
       effortLevel = "medium";
       #model = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq";
-      model = "claude-sonnet-4-6";
+      model = "claude-sonnet-5";
       hooks = {
         Stop = [
           {

@@ -5,7 +5,7 @@
     shellAbbrs = {
       vim = "nvim";
       cdr = "cd (git rev-parse --show-toplevel)";
-      dev = "tmux new-session -s dev nvim";
+      dev = "tmux new-session -s dev claude";
       devt = "tmux attach -t dev";
       devshell = "nix flake init -t github:hrideshmg/nix-templates --refresh";
     };

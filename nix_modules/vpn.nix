@@ -16,6 +16,8 @@ let
   vpnPassword = secrets.softether.password;
 in
 {
+  services.netbird.enable = true;
+
   services.softether = {
     enable = true;
     vpnclient.enable = true;
