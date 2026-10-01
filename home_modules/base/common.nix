@@ -16,6 +16,7 @@
     docker
     python3
     bruno
+    ngrok
 
     # productivity
     keepassxc
@@ -25,6 +26,7 @@
     nemo-with-extensions
 
     # misc
+    obs-studio
     libnotify
     tldr
     ncdu

@@ -49,6 +49,12 @@ in
     agents = {
       researcher = ./agents/researcher-claude.md;
     };
+    marketplaces = {
+      tamatar = fetchGit {
+        url = "git@github.com:gvine-app/tamatar.git";
+        rev = "203682b7330a28fbb51710903bf0484f68fec12a";
+      };
+    };
     skills = {
       humanizer = ./skills/humanizer;
     };
@@ -71,14 +77,20 @@ in
         #ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-4-8";
         #ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-sonnet-4-6";
       };
+      enabledPlugins = {
+        "tamatar@tamatar" = true;
+      };
+      pluginConfigs = {
+        "tamatar@tamatar".options.api_endpoint = "https://tamatar.gvine.app";
+      };
       showThinkingSummaries = true;
       statusLine = {
         type = "command";
         command = "${statusline}/bin/claude-statusline";
       };
-      effortLevel = "medium";
+      effortLevel = "low";
       #model = "arn:aws:bedrock:ap-south-1:233896339929:application-inference-profile/egja0o2rpmxq";
-      model = "claude-sonnet-5";
+      model = "claude-opus-5-5";
       hooks = {
         Stop = [
           {

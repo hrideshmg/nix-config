@@ -8,6 +8,7 @@
       dev = "tmux new-session -s dev claude";
       devt = "tmux attach -t dev";
       devshell = "nix flake init -t github:hrideshmg/nix-templates --refresh";
+      rebuild = "rm -f $HOME/.claude/settings.json && nixos-rebuild switch --flake . --sudo";
     };
     functions = {
       de = {
