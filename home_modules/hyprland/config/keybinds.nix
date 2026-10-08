@@ -31,6 +31,11 @@ in
     hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"), { locked = true, repeating = true })
     hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+"), { locked = true, repeating = true })
 
+    hl.bind(mainMod .. " + Left", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"), { locked = true, repeating = true })
+    hl.bind(mainMod .. " + Right", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+"), { locked = true, repeating = true })
+    hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+    hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+
     hl.bind(mainMod .. " + Q", hl.dsp.window.close())
     hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit())
     hl.bind(mainMod .. " + SPACE", hl.dsp.window.float({ action = "toggle" }))
