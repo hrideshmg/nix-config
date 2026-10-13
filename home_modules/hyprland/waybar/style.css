@@ -74,6 +74,7 @@
 #custom-updates,
 #custom-weather,
 #custom-mail,
+#custom-keyboard,
 #clock,
 #temperature {
   margin: 4px 2px;
@@ -128,4 +129,8 @@
 }
 #custom-power_profile.perf {
   color: #f38ba8;
+}
+
+#custom-keyboard.disabled {
+  color: @base0F;
 }

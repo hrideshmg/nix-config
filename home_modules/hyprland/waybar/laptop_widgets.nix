@@ -1,4 +1,28 @@
 { pkgs, lib, ... }:
+let
+  # NOTE: state lives in a file under XDG_RUNTIME_DIR (cleared on reboot, which
+  # matches Hyprland resetting the device to enabled). If you toggle the device
+  # by other means, the widget will drift out of sync.
+  keyboardToggle = pkgs.writeShellScript "keyboard-toggle" ''
+    state="''${XDG_RUNTIME_DIR:-/tmp}/laptop-keyboard-disabled"
+
+    if [ "$1" = "toggle" ]; then
+      if [ -e "$state" ]; then
+        hyprctl eval "hl.device({name='at-translated-set-2-keyboard', enabled=true})" && rm -f "$state"
+      else
+        hyprctl eval "hl.device({name='at-translated-set-2-keyboard', enabled=false})" && touch "$state"
+      fi
+      pkill -RTMIN+9 waybar
+      exit 0
+    fi
+
+    if [ -e "$state" ]; then
+      echo '{"text": "󰌐", "tooltip": "Laptop keyboard disabled", "class": "disabled"}'
+    else
+      echo '{"text": "󰌌", "tooltip": "Laptop keyboard enabled", "class": "enabled"}'
+    fi
+  '';
+in
 {
   home.packages = with pkgs; [
     wlsunset
@@ -12,6 +36,7 @@
 
     modules-right = lib.mkForce [
       "tray"
+      "custom/keyboard"
       "backlight"
       "pulseaudio"
       "network"
@@ -28,6 +53,14 @@
     #  interval = "once";
     #  tooltip = true;
     #};
+
+    "custom/keyboard" = {
+      exec = "${keyboardToggle}";
+      return-type = "json";
+      on-click = "${keyboardToggle} toggle";
+      signal = 9;
+      interval = "once";
+    };
 
     backlight = {
       format = "{icon} {percent}%";
