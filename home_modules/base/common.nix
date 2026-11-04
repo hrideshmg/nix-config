@@ -17,6 +17,8 @@
     python3
     bruno
     ngrok
+    cloudflared
+    jq
 
     # productivity
     keepassxc
