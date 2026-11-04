@@ -4,7 +4,7 @@
     enable = true;
     context = ./nixos-apps.md;
     settings = {
-      model = "azure/gpt-6-sol";
+      model = "azure/gpt-6-luna";
       small_model = "azure/gpt-6-luna";
       plugin = [ "@mohak34/opencode-notifier@latest" ];
       permission = {
