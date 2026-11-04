@@ -115,7 +115,7 @@ in
         ];
       };
     };
-    context = ./role.md;
+    context = builtins.readFile ./role.md + "\n\n" + builtins.readFile ./nixos-apps.md;
   };
 
   home.activation.makeClaudeSettingsWritable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

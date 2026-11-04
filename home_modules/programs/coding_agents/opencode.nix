@@ -2,6 +2,7 @@
 {
   programs.opencode = {
     enable = true;
+    context = ./nixos-apps.md;
     settings = {
       model = "azure/gpt-6-sol";
       small_model = "azure/gpt-6-luna";
@@ -26,6 +27,11 @@
           headers = {
             Authorization = "Bearer ${secrets.firecrawl.api_key}";
           };
+        };
+        nixos = {
+          type = "local";
+          command = [ "mcp-nixos" "--" ];
+          enabled = true;
         };
       };
     };
